@@ -200,6 +200,9 @@
           <Image iconType="3" name="/icons/Funcionarios.png"/>
         </Property>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="buttonFuncionariosActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="buttonTorneios">
       <Properties>

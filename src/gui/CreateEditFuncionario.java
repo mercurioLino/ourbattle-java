@@ -5,22 +5,27 @@
 package gui;
 
 import static io.Salvar.salvar;
-import classes.Jogador;
+import classes.Funcionario;
 import classes.OurBattle;
 import javax.swing.JOptionPane;
 import static actions.ContainsUserByMail.containsUserByMail;
+import actions.IAtualizaTabela;
+import classes.Organizacao;
 
 /**
  *
  * @author Windows
  */
-public class CreateEditJogador extends javax.swing.JFrame {
+public class CreateEditFuncionario extends javax.swing.JFrame {
 
     OurBattle ourbattle;
-    Jogador jogador;
-    
-    public CreateEditJogador(OurBattle ourbattle, Jogador jogador) {
-        this.jogador = jogador;
+    Funcionario funcionario;
+    Organizacao organizacao;
+    IAtualizaTabela attTabela;
+    public CreateEditFuncionario(OurBattle ourbattle, Organizacao organizacao, Funcionario funcionario, IAtualizaTabela attTabela) {
+        this.attTabela = attTabela;
+        this.organizacao = organizacao;
+        this.funcionario = funcionario;
         this.ourbattle = ourbattle;
         initComponents();
         this.setLocationRelativeTo(null);
@@ -29,12 +34,12 @@ public class CreateEditJogador extends javax.swing.JFrame {
     }
 
     private void inicializaTela(){
-        if(this.jogador!= null){
-            this.textNome.setText(this.jogador.getNome());
-            this.textUsername.setText(this.jogador.getUsername());
-            this.textEmail.setText(this.jogador.getEmail());
-            this.textPassword.setText(this.jogador.getSenha());
-            this.textConfirmPassword.setText(this.jogador.getSenha());
+        if(this.funcionario!= null){
+            this.textNome.setText(this.funcionario.getNome());
+            this.textCPF.setText(this.funcionario.getCpf());
+            this.textEmail.setText(this.funcionario.getEmail());
+            this.textPassword.setText(this.funcionario.getSenha());
+            this.textConfirmPassword.setText(this.funcionario.getSenha());
         }
     }
     @SuppressWarnings("unchecked")
@@ -52,7 +57,7 @@ public class CreateEditJogador extends javax.swing.JFrame {
         textConfirmPassword = new javax.swing.JPasswordField();
         buttonSalvar = new javax.swing.JButton();
         buttonCancelar = new javax.swing.JButton();
-        textUsername = new javax.swing.JTextField();
+        textCPF = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -90,7 +95,7 @@ public class CreateEditJogador extends javax.swing.JFrame {
             }
         });
 
-        jLabel6.setText("Username:");
+        jLabel6.setText("CPF:");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -98,30 +103,24 @@ public class CreateEditJogador extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(100, 100, 100)
-                            .addComponent(buttonCancelar)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(buttonSalvar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGroup(layout.createSequentialGroup()
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(layout.createSequentialGroup()
-                                    .addContainerGap()
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(jLabel1)
-                                        .addComponent(textEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 286, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(textNome, javax.swing.GroupLayout.PREFERRED_SIZE, 286, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addGroup(layout.createSequentialGroup()
-                                    .addContainerGap()
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(textUsername, javax.swing.GroupLayout.PREFERRED_SIZE, 286, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                            .addGap(0, 0, Short.MAX_VALUE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(100, 100, 100)
+                        .addComponent(buttonCancelar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(buttonSalvar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel1)
+                            .addComponent(textEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 286, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(textNome, javax.swing.GroupLayout.PREFERRED_SIZE, 286, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(textCPF, javax.swing.GroupLayout.PREFERRED_SIZE, 286, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -145,7 +144,7 @@ public class CreateEditJogador extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 12, Short.MAX_VALUE)
                 .addComponent(jLabel6)
                 .addGap(1, 1, 1)
-                .addComponent(textUsername, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(textCPF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel4)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -175,32 +174,33 @@ public class CreateEditJogador extends javax.swing.JFrame {
     private void buttonSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonSalvarActionPerformed
         String nome = this.textNome.getText();
         String email = this.textEmail.getText();
-        String username = this.textUsername.getText();
+        String cpf = this.textCPF.getText();
         String password = String.valueOf(this.textPassword.getPassword());
         String confirmPassword = String.valueOf(this.textConfirmPassword.getPassword());
-        if (nome.isBlank() || email.isBlank() || username.isBlank() || password.isBlank() || confirmPassword.isBlank()) {
+        if (nome.isBlank() || email.isBlank() || cpf.isBlank() || password.isBlank() || confirmPassword.isBlank()) {
             JOptionPane.showMessageDialog(null, "Preencha todos os campos para realizar cadastro", "OurBattle.gg", JOptionPane.ERROR_MESSAGE);
         } else if (!password.equals(confirmPassword)) {
             JOptionPane.showMessageDialog(null, "As senhas devem ser iguais", "OurBattle.gg", JOptionPane.ERROR_MESSAGE);
         } else if(containsUserByMail(email, this.ourbattle.getUsuarios())) {
-            if(jogador == null){
+            if(funcionario == null){
                 JOptionPane.showMessageDialog(null, "E-mail ja cadastrado", "OurBattle.gg", JOptionPane.ERROR_MESSAGE);
-            } else if (!email.equals(this.jogador.getEmail())){
+            } else if (!email.equals(this.funcionario.getEmail())){
                 JOptionPane.showMessageDialog(null, "E-mail ja cadastrado", "OurBattle.gg", JOptionPane.ERROR_MESSAGE);
             }
         } else {
-            if(this.jogador == null){
-                this.jogador = new Jogador(nome, username, email, password, "Jogador");
-                this.ourbattle.getJogadores().add(jogador);
-                this.ourbattle.getUsuarios().add(this.jogador);
+            if(this.funcionario == null){
+                this.funcionario = new Funcionario(cpf, nome, email, this.organizacao, password, "Funcionario");
+                this.ourbattle.getFuncionarios().add(funcionario);
+                this.ourbattle.getUsuarios().add(this.funcionario);
             } else{
-                this.jogador.setEmail(email);
-                this.jogador.setNome(nome);
-                this.jogador.setSenha(password);
-                this.jogador.setUsername(username);
+                this.funcionario.setEmail(email);
+                this.funcionario.setNome(nome);
+                this.funcionario.setSenha(password);
+                this.funcionario.setCpf(cpf);
             }
-            salvar(this.ourbattle);
         }
+        this.attTabela.atualizaTabela();
+        salvar(this.ourbattle);
         this.dispose();
     }//GEN-LAST:event_buttonSalvarActionPerformed
 
@@ -214,10 +214,10 @@ public class CreateEditJogador extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JTextField textCPF;
     private javax.swing.JPasswordField textConfirmPassword;
     private javax.swing.JTextField textEmail;
     private javax.swing.JTextField textNome;
     private javax.swing.JPasswordField textPassword;
-    private javax.swing.JTextField textUsername;
     // End of variables declaration//GEN-END:variables
 }

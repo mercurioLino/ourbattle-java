@@ -82,6 +82,11 @@ public class MenuOrganizacao extends javax.swing.JFrame {
         jLabel4.setText("Atendimentos");
 
         buttonFuncionarios.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/Funcionarios.png"))); // NOI18N
+        buttonFuncionarios.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonFuncionariosActionPerformed(evt);
+            }
+        });
 
         buttonTorneios.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/torneio.png"))); // NOI18N
 
@@ -223,6 +228,10 @@ public class MenuOrganizacao extends javax.swing.JFrame {
     private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
         salvar(ourbattle);
     }//GEN-LAST:event_formWindowClosed
+
+    private void buttonFuncionariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonFuncionariosActionPerformed
+        new ListFuncionarios(this.ourbattle, this.organizacao);
+    }//GEN-LAST:event_buttonFuncionariosActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
