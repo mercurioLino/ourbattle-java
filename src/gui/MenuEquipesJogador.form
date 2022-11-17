@@ -39,7 +39,7 @@
                       </Group>
                       <EmptySpace max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="buttonAlterarEquipe" max="32767" attributes="0"/>
+                          <Component id="buttonAlterarEquipe" max="-2" attributes="0"/>
                           <Component id="buttonCreateEquipe" max="32767" attributes="0"/>
                       </Group>
                   </Group>
@@ -175,6 +175,7 @@
           <Font name="Segoe UI" size="14" style="1"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Alterar Equipe"/>
+        <Property name="enabled" type="boolean" value="false"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="buttonAlterarEquipeActionPerformed"/>

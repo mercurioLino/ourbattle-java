@@ -5,7 +5,9 @@
 package gui;
 
 import actions.AtualizaTabela;
+import actions.FindEquipeById;
 import actions.IAtualizaTabela;
+import classes.Equipe;
 import classes.Jogador;
 import classes.OurBattle;
 import static io.Salvar.salvar;
@@ -18,36 +20,39 @@ import javax.swing.event.ListSelectionListener;
  *
  * @author Windows
  */
-public class MenuEquipesJogador extends javax.swing.JFrame implements IAtualizaTabela{
+public class MenuEquipesJogador extends javax.swing.JFrame implements IAtualizaTabela {
 
     OurBattle ourbattle;
     Jogador jogador;
-    
+
     public MenuEquipesJogador(OurBattle ourbattle, Jogador jogador) {
         this.ourbattle = ourbattle;
         this.jogador = jogador;
         initComponents();
+        this.inicializaTela();
         this.atualizaTabela();
         this.setLocationRelativeTo(null);
         this.setVisible(true);
-        
+    }
+
+    private void inicializaTela() {
         this.tabelaEquipes.getColumnModel().getColumn(0).setMinWidth(0);
         this.tabelaEquipes.getColumnModel().getColumn(0).setMaxWidth(0);
-        
+
         this.tabelaEquipes.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-        this.tabelaEquipes.getSelectionModel().addListSelectionListener( new ListSelectionListener() {
+        this.tabelaEquipes.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
             @Override
             public void valueChanged(ListSelectionEvent e) {
-                buttonAlterarEquipe.setEnabled(tabelaEquipes.getSelectedRow() >= 0);
+                Equipe equipe = FindEquipeById.findEquipeById((String) tabelaEquipes.getValueAt(tabelaEquipes.getSelectedRow(), 0), ourbattle.getEquipes());
+                if (equipe.getJogadores().contains(jogador)) {
+                    buttonAlterarEquipe.setEnabled(true);
+                } else {
+                    buttonAlterarEquipe.setEnabled(false);
+                }
             }
-            
         });
     }
 
-    
-    private void inicializaTela(){
-        
-    }
     @Override
     public void atualizaTabela() {
         AtualizaTabela.atualizaTabela(this.ourbattle.getEquipes(), this.tabelaEquipes);
@@ -129,6 +134,7 @@ public class MenuEquipesJogador extends javax.swing.JFrame implements IAtualizaT
 
         buttonAlterarEquipe.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         buttonAlterarEquipe.setText("Alterar Equipe");
+        buttonAlterarEquipe.setEnabled(false);
         buttonAlterarEquipe.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 buttonAlterarEquipeActionPerformed(evt);
@@ -160,7 +166,7 @@ public class MenuEquipesJogador extends javax.swing.JFrame implements IAtualizaT
                                 .addComponent(jLabel1)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(buttonAlterarEquipe, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(buttonAlterarEquipe)
                             .addComponent(buttonCreateEquipe, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
@@ -202,13 +208,8 @@ public class MenuEquipesJogador extends javax.swing.JFrame implements IAtualizaT
     }//GEN-LAST:event_formWindowClosed
 
     private void buttonAlterarEquipeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonAlterarEquipeActionPerformed
-        /*if(this.tabela.getSelectedRowCount() != 0){
-            Jogador jogador = BuscaAluno.buscaAluno(this.alunos, 
-                this.tabela.getValueAt(this.tabela.getSelectedRow(), 0).toString());
-            new TelaAlterar(this.alunos, aluno, this.tabela);
-        } else{
-            JOptionPane.showMessageDialog(null, "Selecione um aluno para editar", "Cadastro de Aluno", 1);
-        }*/
+        Equipe equipe = FindEquipeById.findEquipeById((String) this.tabelaEquipes.getValueAt(this.tabelaEquipes.getSelectedRow(), 0), this.ourbattle.getEquipes());
+        new CreateEditEquipe(this.ourbattle, equipe, null, this);
     }//GEN-LAST:event_buttonAlterarEquipeActionPerformed
 
 
