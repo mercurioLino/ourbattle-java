@@ -5,6 +5,7 @@
 package gui;
 
 import actions.CarregarJogos;
+import actions.FindJogoByNome;
 import actions.IAtualizaTabela;
 import classes.Jogador;
 import classes.Jogo;
@@ -151,7 +152,7 @@ public class CreateEditPerfil extends javax.swing.JFrame {
     private void bCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bCadastrarActionPerformed
         String nickName = this.tNick.getText();
         String elo = this.tElo.getText();
-        Jogo jogo = (Jogo) this.cJogo.getSelectedItem();
+        Jogo jogo = FindJogoByNome.findJogoByNome(this.cJogo.getSelectedItem().toString(), this.ourbattle.getJogos());
         if(nickName.isBlank() || elo.isBlank()){
             JOptionPane.showMessageDialog(null, "Preencha todos os campos para realizar cadastro", "OurBattle.gg", JOptionPane.ERROR_MESSAGE);
         } else {

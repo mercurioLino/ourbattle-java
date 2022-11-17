@@ -12,7 +12,7 @@ public class CarregarJogos {
 
     public static void carregaComboBoxJogos(javax.swing.JComboBox cJogos, TreeSet<Jogo> jogos) {
         for (Jogo jogo : jogos) {
-            cJogos.addItem(jogo);
+            cJogos.addItem(jogo.getNome());
         }
     }
 }
