@@ -4,19 +4,22 @@
  */
 package classes;
 
+import interfaces.IReturnRow;
 import java.io.Serializable;
 import java.util.TreeSet;
+import java.util.Vector;
 
 /**
  *
  * @author leona
  */
-public class Jogador extends Usuario implements Serializable{
+public class Jogador extends Usuario implements Serializable, IReturnRow{
     
     private String nome;
     private String username;
     private int pontuacao;
-    private TreeSet<Torneio> torneiosDisputados;
+    private TreeSet<Equipe> equipes = new TreeSet<>();
+    private TreeSet<Torneio> torneiosDisputados = new TreeSet<>();
 
     public Jogador(String nome, String username, String email, String senha, String tipo) {
         super(email, senha, tipo);
@@ -56,6 +59,23 @@ public class Jogador extends Usuario implements Serializable{
     public void setTorneiosDisputados(TreeSet<Torneio> torneiosDisputados) {
         this.torneiosDisputados = torneiosDisputados;
     }
+
+    public TreeSet<Equipe> getEquipes() {
+        return equipes;
+    }
+
+    public void setEquipes(TreeSet<Equipe> equipes) {
+        this.equipes = equipes;
+    }
     
+    @Override
+    public Vector returnRow() {
+        Vector row = new Vector();
+        row.add(this.getId());
+        row.add(this.nome);
+        row.add(this.username);
+        row.add(this.pontuacao);
+        return row;
+    }
     
 }

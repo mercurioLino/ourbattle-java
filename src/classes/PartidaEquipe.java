@@ -8,8 +8,8 @@ public class PartidaEquipe extends Partida implements Serializable{
     private TreeSet<Equipe> equipesParticipantes;
     private Equipe equipeVencedora;
     
-    public PartidaEquipe(String data, String hora) {
-        super(data, hora);
+    public PartidaEquipe(String data, String hora, String tipo, Torneio torneio) {
+        super(data, hora, tipo, torneio);
     }
 
     public TreeSet<Equipe> getEquipesParticipantes() {

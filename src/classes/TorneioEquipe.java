@@ -8,8 +8,8 @@ public class TorneioEquipe extends Torneio implements Serializable{
     private TreeSet<Equipe> equipesInscritas;
     private Equipe equipeVencedora;
 
-    public TorneioEquipe(String nome, String data, String hora, String premiacao, String regras) {
-        super(nome, data, hora, premiacao, regras);
+    public TorneioEquipe(String nome, String data, String hora, String premiacao, String regras, String tipo, Organizacao organizacao) {
+        super(nome, data, hora, premiacao, regras, tipo, organizacao);
     }
 
     public TreeSet<Equipe> getEquipesInscritas() {

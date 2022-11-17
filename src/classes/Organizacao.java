@@ -2,10 +2,12 @@ package classes;
 
 import actions.AddObjeto;
 import interfaces.IAddObjeto;
+import interfaces.IReturnRow;
 import java.io.Serializable;
 import java.util.TreeSet;
+import java.util.Vector;
 
-public class Organizacao extends Usuario implements Serializable{
+public class Organizacao extends Usuario implements Serializable, IReturnRow{
 
     private String cnpj; 
     private String razaoSocial;
@@ -68,4 +70,14 @@ public class Organizacao extends Usuario implements Serializable{
         new AddObjeto().addObjeto(torneio, this.torneios);
     }
 
+    @Override
+    public Vector returnRow() {
+        Vector row = new Vector();
+        row.add(this.getId());
+        row.add(this.razaoSocial);
+        row.add(this.nomeFantasia);
+        row.add(this.getEmail());
+        row.add(this.cnpj);
+        return row;
+    }
 }

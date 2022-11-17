@@ -1,21 +1,24 @@
 package classes;
 
+import interfaces.IReturnRow;
 import java.io.Serializable;
 import java.util.TreeSet;
 import java.util.UUID;
+import java.util.Vector;
 
-public class Torneio implements Comparable<Torneio>, Serializable{
+public abstract class Torneio implements Comparable<Torneio>, Serializable, IReturnRow{
     private String id;
     private String nome;
     private String data;
     private String hora;
     private String premiacao;
     private String regras;
+    private String tipo;
+    private Organizacao organizacao;
     private int qtdParticipantes;
     private TreeSet<Partida> partidas;
-    private int[] ranking = new int[3];
 
-    public Torneio(String nome, String data, String hora, String premiacao, String regras) {
+    public Torneio(String nome, String data, String hora, String premiacao, String regras, String tipo, Organizacao organizacao) {
         UUID uuid = UUID.randomUUID();
         this.id = uuid.toString();
         this.nome = nome;
@@ -23,6 +26,8 @@ public class Torneio implements Comparable<Torneio>, Serializable{
         this.hora = hora;
         this.premiacao = premiacao;
         this.regras = regras;
+        this.tipo = tipo;
+        this.organizacao = organizacao;
         this.qtdParticipantes = 0;
     }
 
@@ -81,15 +86,15 @@ public class Torneio implements Comparable<Torneio>, Serializable{
     public void setRegras(String regras) {
         this.regras = regras;
     }
+
+    public String getTipo() {
+        return tipo;
+    }
+
+    public void setTipo(String tipo) {
+        this.tipo = tipo;
+    }
     
-    public int[] getRanking() {
-        return ranking;
-    }
-
-    public void setRanking(int[] ranking) {
-        this.ranking = ranking;
-    }
-
     public TreeSet<Partida> getPartidas() {
         return partidas;
     }
@@ -101,6 +106,17 @@ public class Torneio implements Comparable<Torneio>, Serializable{
     @Override
     public int compareTo(Torneio o) {
         return this.id.compareTo(o.getId());
+    }
+    
+    @Override
+    public Vector returnRow() {
+        Vector row = new Vector();
+        row.add(this.id);
+        row.add(this.nome);
+        row.add(this.data);
+        row.add(this.hora);
+        row.add(this.organizacao.getRazaoSocial());
+        return row;
     }
     
 }

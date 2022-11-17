@@ -31,14 +31,6 @@ public class Equipe implements Comparable<Equipe>, Serializable, IReturnRow{
         this.pontuacao = 0;
     }
     
-    public Equipe(String nome) {
-        UUID uuid = UUID.randomUUID();
-        this.id = uuid.toString();
-        this.nome = nome;
-        this.pontuacao = 0;
-        this.jogadores = new TreeSet<>();
-    }
-
     public String getTag() {
         return tag;
     }
@@ -105,7 +97,5 @@ public class Equipe implements Comparable<Equipe>, Serializable, IReturnRow{
         row.add(this.pontuacao);
         return row;
     }
-    
-    
     
 }

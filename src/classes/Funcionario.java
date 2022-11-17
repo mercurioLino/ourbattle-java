@@ -4,24 +4,28 @@
  */
 package classes;
 
+import interfaces.IReturnRow;
 import java.io.Serializable;
+import java.util.Vector;
 
 /**
  *
  * @author Windows
  */
-public class Funcionario extends Usuario implements Serializable{
+public class Funcionario extends Usuario implements Serializable, IReturnRow{
     private String cpf;
     private String nome;
     private String dataNascimento;
-    private String telefone;
+    private String email;
+    private Organizacao organizacao;
 
-    public Funcionario(String cpf, String nome, String dataNascimento, String telefone, String email, String senha, String tipo) {
+    public Funcionario(String cpf, String nome, String dataNascimento, String email, Organizacao organizacao, String senha, String tipo) {
         super(email, senha, tipo);
         this.cpf = cpf;
         this.nome = nome;
         this.dataNascimento = dataNascimento;
-        this.telefone = telefone;
+        this.email = email;
+        this.organizacao = organizacao;
     }
 
     public String getCpf() {
@@ -48,13 +52,30 @@ public class Funcionario extends Usuario implements Serializable{
         this.dataNascimento = dataNascimento;
     }
 
-    public String getTelefone() {
-        return telefone;
+    public String getEmail() {
+        return email;
     }
 
-    public void setTelefone(String telefone) {
-        this.telefone = telefone;
+    public Organizacao getOrganizacao() {
+        return organizacao;
+    }
+
+    public void setOrganizacao(Organizacao organizacao) {
+        this.organizacao = organizacao;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
     
+    @Override
+    public Vector returnRow() {
+        Vector row = new Vector();
+        row.add(this.getId());
+        row.add(this.nome);
+        row.add(this.email);
+        row.add(this.organizacao.getRazaoSocial());
+        return row;
+    }
     
 }

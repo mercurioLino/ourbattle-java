@@ -4,19 +4,26 @@
  */
 package classes;
 
+import interfaces.IReturnRow;
 import java.io.Serializable;
+import java.util.UUID;
+import java.util.Vector;
 
 /**
  *
  * @author leona
  */
-public class Perfil implements Serializable{
+public class Perfil implements Serializable, IReturnRow{
+    private String id;
     private Jogador jogador;
     private Jogo jogo;
     private String nickname;
     private String elo;
+    private String tipo;
 
     public Perfil(Jogador jogador, Jogo jogo, String nickname, String elo) {
+        UUID uuid = UUID.randomUUID();
+        this.id = uuid.toString();
         this.jogador = jogador;
         this.jogo = jogo;
         this.nickname = nickname;
@@ -54,6 +61,32 @@ public class Perfil implements Serializable{
     public void setElo(String elo) {
         this.elo = elo;
     }
+
+    public String getTipo() {
+        return tipo;
+    }
+
+    public void setTipo(String tipo) {
+        this.tipo = tipo;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
     
     
+    
+    @Override
+    public Vector returnRow() {
+        Vector row = new Vector();
+        row.add(this.jogador.getUsername());
+        row.add(this.nickname);
+        row.add(this.elo);
+        row.add(this.jogo.getNome());
+        return row;
+    }
 }

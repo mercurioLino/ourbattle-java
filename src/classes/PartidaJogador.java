@@ -17,8 +17,8 @@ public class PartidaJogador extends Partida implements Serializable{
     private TreeSet<Jogador> jogadoresParticipantes;
     private Jogador jogadorVencedor;
 
-    public PartidaJogador(String data, String hora) {
-        super(data, hora);
+    public PartidaJogador(String data, String hora, String tipo, Torneio torneio) {
+        super(data, hora, tipo, torneio);
     }
         
     public TreeSet<Jogador> getJogadoresParticipantes() {

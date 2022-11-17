@@ -80,7 +80,12 @@ public class MenuJogador extends javax.swing.JFrame {
         jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel4.setText("Atendimentos");
 
-        buttonFuncionarios.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/Funcionarios.png"))); // NOI18N
+        buttonFuncionarios.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/amigos.png"))); // NOI18N
+        buttonFuncionarios.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonFuncionariosActionPerformed(evt);
+            }
+        });
 
         buttonTorneios.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/torneio.png"))); // NOI18N
 
@@ -88,7 +93,7 @@ public class MenuJogador extends javax.swing.JFrame {
         jLabel5.setText("Torneios");
 
         jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel6.setText("Funcionários");
+        jLabel6.setText("Jogadores");
 
         bConta.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         bConta.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/Usuario.png"))); // NOI18N
@@ -145,19 +150,22 @@ public class MenuJogador extends javax.swing.JFrame {
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(45, 45, 45)
                                 .addComponent(jLabel3)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 70, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                            .addGroup(layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 70, Short.MAX_VALUE)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(buttonSuporte, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(buttonFuncionarios, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(70, 70, 70))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(jLabel4)
-                                .addGap(91, 91, 91))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(buttonSuporte, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(buttonFuncionarios, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGap(70, 70, 70))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                        .addComponent(jLabel4)
+                                        .addGap(91, 91, 91))))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(102, 102, 102)
                                 .addComponent(jLabel6)
-                                .addGap(92, 92, 92)))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(buttonPerfis, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(buttonOrganizacoes, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -193,11 +201,7 @@ public class MenuJogador extends javax.swing.JFrame {
                                 .addGap(18, 18, 18)
                                 .addComponent(buttonFuncionarios, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel6)
-                                .addGap(0, 0, Short.MAX_VALUE))))
+                        .addComponent(jLabel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(buttonSair, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -209,7 +213,9 @@ public class MenuJogador extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addComponent(buttonTorneios, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel5)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel5)
+                            .addComponent(jLabel6))))
                 .addContainerGap())
         );
 
@@ -231,6 +237,10 @@ public class MenuJogador extends javax.swing.JFrame {
     private void bContaMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bContaMouseReleased
         new CreateEditJogador(this.ourbattle, this.jogador);
     }//GEN-LAST:event_bContaMouseReleased
+
+    private void buttonFuncionariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonFuncionariosActionPerformed
+       new Jogadores(this.ourbattle);
+    }//GEN-LAST:event_buttonFuncionariosActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
