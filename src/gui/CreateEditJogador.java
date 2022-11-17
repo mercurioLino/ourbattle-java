@@ -183,14 +183,19 @@ public class CreateEditJogador extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Preencha todos os campos para realizar cadastro", "OurBattle.gg", JOptionPane.ERROR_MESSAGE);
         } else if (!password.equals(confirmPassword)) {
             JOptionPane.showMessageDialog(null, "As senhas devem ser iguais", "OurBattle.gg", JOptionPane.ERROR_MESSAGE);
-        } else if (containsJogadorByMail(email, this.ourbattle.getUsuarios())) {
-            JOptionPane.showMessageDialog(null, "E-mail ja cadastrado", "OurBattle.gg", JOptionPane.ERROR_MESSAGE);
+        } else if(containsJogadorByMail(email, this.ourbattle.getUsuarios())) {
+            if(jogador == null){
+                JOptionPane.showMessageDialog(null, "E-mail ja cadastrado", "OurBattle.gg", JOptionPane.ERROR_MESSAGE);
+            } else if (!email.equals(this.jogador.getEmail())){
+                JOptionPane.showMessageDialog(null, "E-mail ja cadastrado", "OurBattle.gg", JOptionPane.ERROR_MESSAGE);
+            }
         } else {
             if(this.jogador == null){
                 this.jogador = new Jogador(nome, username, email, password, "Jogador");
                 this.ourbattle.getJogadores().add(jogador);
                 this.ourbattle.getUsuarios().add(this.jogador);
             } else{
+                
                 this.jogador.setEmail(email);
                 this.jogador.setNome(nome);
                 this.jogador.setSenha(password);
