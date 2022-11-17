@@ -243,16 +243,13 @@ public class MenuJogador extends javax.swing.JFrame {
         new CreateEditJogador(this.ourbattle, this.jogador);
     }//GEN-LAST:event_bContaMouseReleased
 
-<<<<<<< Updated upstream
     private void buttonFuncionariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonFuncionariosActionPerformed
        new Jogadores(this.ourbattle);
     }//GEN-LAST:event_buttonFuncionariosActionPerformed
-=======
+
     private void buttonTorneiosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonTorneiosActionPerformed
         new TorneiosJogador(this.ourbattle, this.jogador);
     }//GEN-LAST:event_buttonTorneiosActionPerformed
->>>>>>> Stashed changes
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel bConta;

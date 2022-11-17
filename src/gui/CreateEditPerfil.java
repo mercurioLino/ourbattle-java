@@ -146,7 +146,7 @@ public class CreateEditPerfil extends javax.swing.JFrame {
     }//GEN-LAST:event_bCancelarActionPerformed
 
     private void bCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bCadastrarActionPerformed
-        String nome = this.textNome.getText();
+        /*String nome = this.textNome.getText();
         String tag = this.tElo.getText();
         if(nome.isBlank() || tag.isBlank()){
             JOptionPane.showMessageDialog(null, "Preencha todos os campos para realizar cadastro", "OurBattle.gg", JOptionPane.ERROR_MESSAGE);
@@ -162,7 +162,7 @@ public class CreateEditPerfil extends javax.swing.JFrame {
         }
         this.attTabela.atualizaTabela();
         salvar(this.ourbattle);
-        this.dispose();
+        this.dispose();*/
     }//GEN-LAST:event_bCadastrarActionPerformed
 
 
