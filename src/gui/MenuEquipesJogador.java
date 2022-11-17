@@ -43,11 +43,13 @@ public class MenuEquipesJogador extends javax.swing.JFrame implements IAtualizaT
         this.tabelaEquipes.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
             @Override
             public void valueChanged(ListSelectionEvent e) {
-                Equipe equipe = FindEquipeById.findEquipeById((String) tabelaEquipes.getValueAt(tabelaEquipes.getSelectedRow(), 0), ourbattle.getEquipes());
-                if (equipe.getJogadores().contains(jogador)) {
-                    buttonAlterarEquipe.setEnabled(true);
-                } else {
-                    buttonAlterarEquipe.setEnabled(false);
+                if(tabelaEquipes.getSelectedRowCount() > 0){
+                    Equipe equipe = FindEquipeById.findEquipeById((String) tabelaEquipes.getValueAt(tabelaEquipes.getSelectedRow(), 0), ourbattle.getEquipes());
+                    if (equipe.getJogadores().contains(jogador)) {
+                        buttonAlterarEquipe.setEnabled(true);
+                    } else {
+                        buttonAlterarEquipe.setEnabled(false);
+                    }
                 }
             }
         });
@@ -200,7 +202,7 @@ public class MenuEquipesJogador extends javax.swing.JFrame implements IAtualizaT
     }//GEN-LAST:event_buttonSairActionPerformed
 
     private void buttonCreateEquipeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonCreateEquipeActionPerformed
-        new CreateEditEquipe(this.ourbattle, null, this.jogador, this);
+        new CreateEditEquipe(this.ourbattle, null, this.jogador, this, this.tabelaEquipes);
     }//GEN-LAST:event_buttonCreateEquipeActionPerformed
 
     private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
@@ -209,7 +211,7 @@ public class MenuEquipesJogador extends javax.swing.JFrame implements IAtualizaT
 
     private void buttonAlterarEquipeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonAlterarEquipeActionPerformed
         Equipe equipe = FindEquipeById.findEquipeById((String) this.tabelaEquipes.getValueAt(this.tabelaEquipes.getSelectedRow(), 0), this.ourbattle.getEquipes());
-        new CreateEditEquipe(this.ourbattle, equipe, null, this);
+        new CreateEditEquipe(this.ourbattle, equipe, null, this, this.tabelaEquipes);
     }//GEN-LAST:event_buttonAlterarEquipeActionPerformed
 
 

@@ -13,7 +13,7 @@ import java.util.Vector;
  *
  * @author leona
  */
-public class Perfil implements Serializable, IReturnRow{
+public class Perfil implements Comparable<Perfil>, Serializable, IReturnRow{
     private String id;
     private Jogador jogador;
     private Jogo jogo;
@@ -68,12 +68,16 @@ public class Perfil implements Serializable, IReturnRow{
     public void setId(String id) {
         this.id = id;
     }
-    
-    
+
+    @Override
+    public int compareTo(Perfil o) {
+        return this.id.compareTo(o.getId());
+    }
     
     @Override
     public Vector returnRow() {
         Vector row = new Vector();
+        row.add(this.id);
         row.add(this.jogador.getUsername());
         row.add(this.nickname);
         row.add(this.elo);

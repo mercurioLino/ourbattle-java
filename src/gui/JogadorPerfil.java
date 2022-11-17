@@ -25,27 +25,31 @@ public class JogadorPerfil extends javax.swing.JFrame implements IAtualizaTabela
      */
     OurBattle ourbattle;
     Jogador jogador;
+    Perfil perfil;
     public JogadorPerfil(OurBattle ourbattle, Jogador jogador) {
         this.ourbattle = ourbattle;
         this.jogador = jogador;
         initComponents();
+        this.atualizaTabela();
+        this.inicializaTela();
         this.setLocationRelativeTo(null);
         this.setVisible(true);
     }
     
         private void inicializaTela() {
-        this.tabelaPerfis.getColumnModel().getColumn(0).setMinWidth(0);
-        this.tabelaPerfis.getColumnModel().getColumn(0).setMaxWidth(0);
-
-        this.tabelaPerfis.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+            
         this.tabelaPerfis.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
             @Override
             public void valueChanged(ListSelectionEvent e) {
-                Perfil perfil = FindPerfilById.findPerfilById((String) tabelaPerfis.getValueAt(tabelaPerfis.getSelectedRow(), 0), ourbattle.getPerfis());
-                if (perfil.getJogador().equals(jogador)) {
-                    bAlterarPerfil.setEnabled(true);
-                } else {
-                    bRemoverPerfil.setEnabled(false);
+                if(tabelaPerfis.getSelectedRowCount() > 0){
+                    Perfil perfil = FindPerfilById.findPerfilById((String) tabelaPerfis.getValueAt(tabelaPerfis.getSelectedRow(), 0), ourbattle.getPerfis());
+                    if (perfil.getJogador().equals(jogador)) {
+                        bAlterarPerfil.setEnabled(true);
+                        bRemoverPerfil.setEnabled(true);
+                    } else {
+                        bAlterarPerfil.setEnabled(false);
+                        bRemoverPerfil.setEnabled(false);
+                    }
                 }
             }
         });
@@ -93,7 +97,9 @@ public class JogadorPerfil extends javax.swing.JFrame implements IAtualizaTabela
                 return canEdit [columnIndex];
             }
         });
+        tabelaPerfis.setColumnSelectionAllowed(true);
         jScrollPane1.setViewportView(tabelaPerfis);
+        tabelaPerfis.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         if (tabelaPerfis.getColumnModel().getColumnCount() > 0) {
             tabelaPerfis.getColumnModel().getColumn(0).setMinWidth(0);
             tabelaPerfis.getColumnModel().getColumn(0).setPreferredWidth(0);
@@ -106,6 +112,7 @@ public class JogadorPerfil extends javax.swing.JFrame implements IAtualizaTabela
 
         bAlterarPerfil.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         bAlterarPerfil.setText("Editar");
+        bAlterarPerfil.setEnabled(false);
         bAlterarPerfil.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 bAlterarPerfilActionPerformed(evt);
@@ -122,6 +129,7 @@ public class JogadorPerfil extends javax.swing.JFrame implements IAtualizaTabela
 
         bRemoverPerfil.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         bRemoverPerfil.setText("Remover");
+        bRemoverPerfil.setEnabled(false);
         bRemoverPerfil.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 bRemoverPerfilActionPerformed(evt);

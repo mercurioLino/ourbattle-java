@@ -4,6 +4,7 @@
  */
 package gui;
 
+import actions.AtualizaTabela;
 import actions.IAtualizaTabela;
 import classes.Equipe;
 import classes.Jogador;
@@ -21,11 +22,13 @@ public class CreateEditEquipe extends javax.swing.JFrame {
     Jogador jogador;
     IAtualizaTabela attTabela;
     Equipe equipe;
-    public CreateEditEquipe(OurBattle ourbattle, Equipe equipe, Jogador jogador, IAtualizaTabela attTabela) {
+    javax.swing.JTable tabela;
+    public CreateEditEquipe(OurBattle ourbattle, Equipe equipe, Jogador jogador, IAtualizaTabela attTabela, javax.swing.JTable tabela) {
         this.equipe = equipe;
         this.attTabela = attTabela;
         this.ourbattle = ourbattle;
         this.jogador = jogador;
+        this.tabela = tabela;
         initComponents();
         this.setLocationRelativeTo(null);
         this.inicializaTela();
@@ -57,6 +60,11 @@ public class CreateEditEquipe extends javax.swing.JFrame {
         textTag = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosed(java.awt.event.WindowEvent evt) {
+                formWindowClosed(evt);
+            }
+        });
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel1.setText("Criar Equipe");
@@ -146,10 +154,16 @@ public class CreateEditEquipe extends javax.swing.JFrame {
                 this.equipe.setTag(tag);
             }
         }
-        this.attTabela.atualizaTabela();
+        AtualizaTabela.atualizaTabela(this.ourbattle.getEquipes(), tabela);
+        //this.attTabela.atualizaTabela();
         salvar(this.ourbattle);
         this.dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
+        
+        
+    }//GEN-LAST:event_formWindowClosed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -18,8 +18,8 @@ import javax.swing.table.DefaultTableModel;
 public class AtualizaTabela {
     public static void atualizaTabela(Set<?> set, javax.swing.JTable tabela){
         DefaultTableModel model = (DefaultTableModel)tabela.getModel();
-        Iterator it = set.iterator();
         model.setRowCount(0);
+        Iterator it = set.iterator();
         while(it.hasNext()){
             IReturnRow current = (IReturnRow) it.next();
             Vector row = current.returnRow();

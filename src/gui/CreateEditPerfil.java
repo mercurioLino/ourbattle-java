@@ -98,6 +98,7 @@ public class CreateEditPerfil extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(cJogo, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -110,12 +111,10 @@ public class CreateEditPerfil extends javax.swing.JFrame {
                                     .addGap(194, 194, 194))
                                 .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.LEADING))
                             .addComponent(jLabel5)
-                            .addComponent(jLabel6)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(cJogo, javax.swing.GroupLayout.Alignment.LEADING, 0, 155, Short.MAX_VALUE)
-                                .addComponent(tElo, javax.swing.GroupLayout.Alignment.LEADING)))
+                            .addComponent(jLabel6))
                         .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(tNick, javax.swing.GroupLayout.Alignment.TRAILING))
+                    .addComponent(tNick, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(tElo))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -158,6 +157,7 @@ public class CreateEditPerfil extends javax.swing.JFrame {
         } else {
             if(this.perfil == null){
                 Perfil perfil = new Perfil(this.jogador, jogo, nickName, elo);
+                this.ourbattle.getPerfis().add(perfil);
             } else {
                 this.perfil.setNickname(nickName);
                 this.perfil.setElo(elo);
