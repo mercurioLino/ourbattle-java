@@ -74,6 +74,7 @@ public class MenuEquipesJogador extends javax.swing.JFrame implements IAtualizaT
         buttonSair = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         buttonAlterarEquipe = new javax.swing.JButton();
+        buttonInscrever = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -165,6 +166,14 @@ public class MenuEquipesJogador extends javax.swing.JFrame implements IAtualizaT
             }
         });
 
+        buttonInscrever.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        buttonInscrever.setText("Inscrever-se em uma Equipe");
+        buttonInscrever.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonInscreverActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -172,20 +181,24 @@ public class MenuEquipesJogador extends javax.swing.JFrame implements IAtualizaT
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
                         .addGap(17, 17, 17)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(buttonSair, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(16, 16, 16)
                                 .addComponent(jLabel1)))
-                        .addGap(278, 278, 278)
+                        .addGap(285, 285, 285)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(buttonAlterarEquipe, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(buttonCreateEquipe, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(buttonRemoverEquipe, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                            .addComponent(buttonInscrever, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(buttonAlterarEquipe)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(buttonRemoverEquipe)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -194,19 +207,20 @@ public class MenuEquipesJogador extends javax.swing.JFrame implements IAtualizaT
                 .addGap(17, 17, 17)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(6, 6, 6)
                         .addComponent(buttonCreateEquipe)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(buttonAlterarEquipe))
+                        .addComponent(buttonInscrever))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(buttonSair, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel1)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(buttonRemoverEquipe)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(buttonRemoverEquipe)
+                    .addComponent(buttonAlterarEquipe))
+                .addContainerGap(12, Short.MAX_VALUE))
         );
 
         pack();
@@ -236,10 +250,15 @@ public class MenuEquipesJogador extends javax.swing.JFrame implements IAtualizaT
         new CreateEditEquipe(this.ourbattle, equipe, null, this);
     }//GEN-LAST:event_buttonAlterarEquipeActionPerformed
 
+    private void buttonInscreverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonInscreverActionPerformed
+        new InscreverJogadorEmEquipe(this.ourbattle, this.jogador);
+    }//GEN-LAST:event_buttonInscreverActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton buttonAlterarEquipe;
     private javax.swing.JButton buttonCreateEquipe;
+    private javax.swing.JButton buttonInscrever;
     private javax.swing.JButton buttonRemoverEquipe;
     private javax.swing.JButton buttonSair;
     private javax.swing.JLabel jLabel1;

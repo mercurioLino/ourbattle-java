@@ -142,6 +142,7 @@ public class InscreverEquipe extends javax.swing.JFrame {
         Equipe equipe = FindEquipeByNome.findEquipeByNome((String) this.comboEquipe.getSelectedItem(), this.ourbattle.getEquipes());
         torneio.getEquipesInscritas().add(equipe);
         salvar(this.ourbattle);
+        this.dispose();
     }//GEN-LAST:event_bInscreverActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
