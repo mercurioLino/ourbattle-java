@@ -35,6 +35,10 @@ public abstract class Torneio implements Comparable<Torneio>, Serializable, IRet
         return id;
     }
 
+    public Organizacao getOrganizacao() {
+        return organizacao;
+    }
+
     public void setId(String id) {
         this.id = id;
     }

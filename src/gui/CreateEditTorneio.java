@@ -33,6 +33,7 @@ public class CreateEditTorneio extends javax.swing.JFrame {
         this.torneio = torneio;
         this.attTabela = attTabela;
         initComponents();
+        inicializaTela();
         this.setLocationRelativeTo(null);
         this.setVisible(true);
     }

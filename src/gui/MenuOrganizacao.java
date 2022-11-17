@@ -89,6 +89,11 @@ public class MenuOrganizacao extends javax.swing.JFrame {
         });
 
         buttonTorneios.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/torneio.png"))); // NOI18N
+        buttonTorneios.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonTorneiosActionPerformed(evt);
+            }
+        });
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel5.setText("Torneios");
@@ -250,6 +255,10 @@ public class MenuOrganizacao extends javax.swing.JFrame {
     private void buttonPerfisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonPerfisActionPerformed
        new ListPerfis(this.ourbattle);
     }//GEN-LAST:event_buttonPerfisActionPerformed
+
+    private void buttonTorneiosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonTorneiosActionPerformed
+        new TorneiosOrganizador(this.ourbattle, this.organizacao);
+    }//GEN-LAST:event_buttonTorneiosActionPerformed
 
 
 
