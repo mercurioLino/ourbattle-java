@@ -19,7 +19,6 @@ public class Perfil implements Serializable, IReturnRow{
     private Jogo jogo;
     private String nickname;
     private String elo;
-    private String tipo;
 
     public Perfil(Jogador jogador, Jogo jogo, String nickname, String elo) {
         UUID uuid = UUID.randomUUID();
@@ -60,14 +59,6 @@ public class Perfil implements Serializable, IReturnRow{
 
     public void setElo(String elo) {
         this.elo = elo;
-    }
-
-    public String getTipo() {
-        return tipo;
-    }
-
-    public void setTipo(String tipo) {
-        this.tipo = tipo;
     }
 
     public String getId() {

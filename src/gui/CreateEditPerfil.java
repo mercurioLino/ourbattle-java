@@ -5,8 +5,8 @@
 package gui;
 
 import actions.IAtualizaTabela;
-import classes.Equipe;
 import classes.Jogador;
+import classes.Jogo;
 import classes.OurBattle;
 import classes.Perfil;
 import static io.Salvar.salvar;
@@ -22,7 +22,7 @@ public class CreateEditPerfil extends javax.swing.JFrame {
     Jogador jogador;
     IAtualizaTabela attTabela;
     Perfil perfil;
-    public CreateEditPerfil(OurBattle ourbattle, Equipe equipe, Jogador jogador, IAtualizaTabela attTabela) {
+    public CreateEditPerfil(OurBattle ourbattle, Perfil perfil, Jogador jogador, IAtualizaTabela attTabela) {
         this.perfil = perfil;
         this.attTabela = attTabela;
         this.ourbattle = ourbattle;
@@ -37,6 +37,7 @@ public class CreateEditPerfil extends javax.swing.JFrame {
         if(this.perfil!= null){
             this.tNick.setText(this.perfil.getNickname());
             this.tElo.setText(this.perfil.getElo());
+            this.cJogo.setSelectedItem(this.perfil.getJogo());
         }
     }
     
@@ -146,23 +147,23 @@ public class CreateEditPerfil extends javax.swing.JFrame {
     }//GEN-LAST:event_bCancelarActionPerformed
 
     private void bCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bCadastrarActionPerformed
-        /*String nome = this.textNome.getText();
-        String tag = this.tElo.getText();
-        if(nome.isBlank() || tag.isBlank()){
+        String nickName = this.tNick.getText();
+        String elo = this.tElo.getText();
+        Jogo jogo = (Jogo) this.cJogo.getSelectedItem();
+        if(nickName.isBlank() || elo.isBlank()){
             JOptionPane.showMessageDialog(null, "Preencha todos os campos para realizar cadastro", "OurBattle.gg", JOptionPane.ERROR_MESSAGE);
         } else {
-            if(this.equipe == null){
-                Equipe equipe = new Equipe(nome, tag);
-                equipe.getJogadores().add(jogador);
-                this.ourbattle.getEquipes().add(equipe);
+            if(this.perfil == null){
+                Perfil perfil = new Perfil(this.jogador, jogo, nickName, elo);
             } else {
-                this.equipe.setNome(nome);
-                this.equipe.setTag(tag);
+                this.perfil.setNickname(nickName);
+                this.perfil.setElo(elo);
+                this.perfil.setJogo(jogo);
             }
         }
         this.attTabela.atualizaTabela();
         salvar(this.ourbattle);
-        this.dispose();*/
+        this.dispose();
     }//GEN-LAST:event_bCadastrarActionPerformed
 
 

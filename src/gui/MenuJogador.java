@@ -114,6 +114,11 @@ public class MenuJogador extends javax.swing.JFrame {
         jLabel2.setText("Conta");
 
         buttonPerfis.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/Modalidades.png"))); // NOI18N
+        buttonPerfis.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonPerfisActionPerformed(evt);
+            }
+        });
 
         jLabel7.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel7.setText("Organizações");
@@ -250,6 +255,10 @@ public class MenuJogador extends javax.swing.JFrame {
     private void buttonTorneiosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonTorneiosActionPerformed
         new TorneiosJogador(this.ourbattle, this.jogador);
     }//GEN-LAST:event_buttonTorneiosActionPerformed
+
+    private void buttonPerfisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonPerfisActionPerformed
+        new JogadorPerfil(this.ourbattle, this.jogador);
+    }//GEN-LAST:event_buttonPerfisActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel bConta;

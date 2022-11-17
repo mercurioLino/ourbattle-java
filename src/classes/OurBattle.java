@@ -23,6 +23,7 @@ public class OurBattle implements Serializable{
     TreeSet<Partida> partidas = new TreeSet<>();
     TreeSet<Torneio> torneios = new TreeSet<>();
     TreeSet<Usuario> usuarios = new TreeSet<>();
+    TreeSet<Perfil> perfis = new TreeSet<>();
 
     public OurBattle() {
     }
@@ -101,5 +102,11 @@ public class OurBattle implements Serializable{
         this.torneios = torneios;
     }
     
-    
+    public TreeSet<Perfil> getPerfis() {
+        return perfis;
+    }
+
+    public void setPerfis(TreeSet<Perfil> perfis) {
+        this.perfis = perfis;
+    }
 }
