@@ -95,8 +95,8 @@ public class MenuJogador extends javax.swing.JFrame {
         bConta.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         bConta.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         bConta.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                bContaMouseClicked(evt);
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                bContaMouseReleased(evt);
             }
         });
 
@@ -228,9 +228,9 @@ public class MenuJogador extends javax.swing.JFrame {
         salvar(ourbattle);
     }//GEN-LAST:event_formWindowClosed
 
-    private void bContaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bContaMouseClicked
+    private void bContaMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bContaMouseReleased
         new CreateEditJogador(this.ourbattle, this.jogador);
-    }//GEN-LAST:event_bContaMouseClicked
+    }//GEN-LAST:event_bContaMouseReleased
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
