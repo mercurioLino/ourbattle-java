@@ -5,6 +5,7 @@
 package gui;
 
 import actions.CarregarJogos;
+import actions.CarregarOrganizacoes;
 import actions.FindOrganizacaoByRazaoSocial;
 import actions.IAtualizaTabela;
 import classes.Atendimento;
@@ -30,16 +31,11 @@ public class CreateJogadorAtendimento extends javax.swing.JFrame {
         this.jogador = jogador;
         this.attTabela = attTabela;
         initComponents();
-        carregarOrganizacoes();
+        CarregarOrganizacoes.carregaComboBoxOrganizacoes(cOrganizacao, this.ourbattle.getOrganizacoes());
         this.setLocationRelativeTo(null);
         this.setVisible(true);
     }
     
-    private void carregarOrganizacoes() {
-        for (Organizacao organizacao : this.ourbattle.getOrganizacoes()) {
-            cOrganizacao.addItem(organizacao.getNomeFantasia());
-        }
-    }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -144,6 +140,7 @@ public class CreateJogadorAtendimento extends javax.swing.JFrame {
         } else {
             Atendimento atendimento = new Atendimento(this.jogador, organizacao, ocorrido);
             this.ourbattle.getAtendimentos().add(atendimento);
+            this.jogador.getAtendimentos().add(atendimento);
         }
         this.attTabela.atualizaTabela();
         salvar(this.ourbattle);

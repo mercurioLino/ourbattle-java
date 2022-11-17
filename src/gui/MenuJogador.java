@@ -59,6 +59,11 @@ public class MenuJogador extends javax.swing.JFrame {
         });
 
         buttonSuporte.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/Atendimento.png"))); // NOI18N
+        buttonSuporte.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonSuporteActionPerformed(evt);
+            }
+        });
 
         buttonSair.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/exit.png"))); // NOI18N
         buttonSair.addActionListener(new java.awt.event.ActionListener() {
@@ -268,6 +273,10 @@ public class MenuJogador extends javax.swing.JFrame {
     private void buttonOrganizacoesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonOrganizacoesActionPerformed
         new ListOrganizacoes(this.ourbattle);
     }//GEN-LAST:event_buttonOrganizacoesActionPerformed
+
+    private void buttonSuporteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonSuporteActionPerformed
+        new JogadorAtendimento(this.ourbattle, this.jogador);
+    }//GEN-LAST:event_buttonSuporteActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel bConta;

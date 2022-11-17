@@ -13,7 +13,8 @@ import java.util.Vector;
  *
  * @author Windows
  */
-public class Atendimento implements Serializable, IReturnRow{
+public class Atendimento implements Comparable<Atendimento>, Serializable, IReturnRow {
+
     private String id;
     private Jogador jogador;
     private Organizacao organizacao;
@@ -28,6 +29,18 @@ public class Atendimento implements Serializable, IReturnRow{
         this.descricao = descricao;
         this.jogador = jogador;
         this.organizacao = organizacao;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public Jogador getJogador() {
+        return jogador;
+    }
+
+    public Organizacao getOrganizacao() {
+        return organizacao;
     }
 
     public String getDescricao() {
@@ -55,15 +68,17 @@ public class Atendimento implements Serializable, IReturnRow{
     }
 
     @Override
+    public int compareTo(Atendimento o) {
+        return this.id.compareTo(o.getId());
+    }
+
+    @Override
     public Vector returnRow() {
         Vector row = new Vector();
         row.add(this.id);
         row.add(this.jogador.getNome());
         row.add(this.organizacao.getRazaoSocial());
-        row.add(this.solucionado);
         return row;
     }
-    
-    
-    
+
 }

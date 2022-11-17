@@ -20,6 +20,7 @@ public class Jogador extends Usuario implements Serializable, IReturnRow{
     private int pontuacao;
     private TreeSet<Equipe> equipes = new TreeSet<>();
     private TreeSet<Torneio> torneiosDisputados = new TreeSet<>();
+    private TreeSet<Atendimento> atendimentos = new TreeSet<>();
 
     public Jogador(String nome, String username, String email, String senha, String tipo) {
         super(email, senha, tipo);
@@ -66,6 +67,14 @@ public class Jogador extends Usuario implements Serializable, IReturnRow{
 
     public void setEquipes(TreeSet<Equipe> equipes) {
         this.equipes = equipes;
+    }
+
+    public TreeSet<Atendimento> getAtendimentos() {
+        return atendimentos;
+    }
+
+    public void setAtendimentos(TreeSet<Atendimento> atendimentos) {
+        this.atendimentos = atendimentos;
     }
     
     @Override

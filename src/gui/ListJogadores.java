@@ -8,9 +8,6 @@ import actions.AtualizaTabela;
 import actions.FindJogadorById;
 import classes.Jogador;
 import classes.OurBattle;
-import javax.swing.ListSelectionModel;
-import javax.swing.event.ListSelectionEvent;
-import javax.swing.event.ListSelectionListener;
 
 /**
  *
