@@ -64,7 +64,7 @@ public class JogadorPerfil extends javax.swing.JFrame implements IAtualizaTabela
         jScrollPane1 = new javax.swing.JScrollPane();
         tabelaPerfis = new javax.swing.JTable();
         bAlterarPerfil = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        bSair = new javax.swing.JButton();
         bRemoverPerfil = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
@@ -106,17 +106,27 @@ public class JogadorPerfil extends javax.swing.JFrame implements IAtualizaTabela
 
         bAlterarPerfil.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         bAlterarPerfil.setText("Editar");
-
-        jButton2.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jButton2.setText("Sair");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        bAlterarPerfil.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                bAlterarPerfilActionPerformed(evt);
+            }
+        });
+
+        bSair.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        bSair.setText("Sair");
+        bSair.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bSairActionPerformed(evt);
             }
         });
 
         bRemoverPerfil.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         bRemoverPerfil.setText("Remover");
+        bRemoverPerfil.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bRemoverPerfilActionPerformed(evt);
+            }
+        });
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Filtros"));
 
@@ -182,7 +192,7 @@ public class JogadorPerfil extends javax.swing.JFrame implements IAtualizaTabela
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(bRemoverPerfil, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(bSair, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -199,7 +209,7 @@ public class JogadorPerfil extends javax.swing.JFrame implements IAtualizaTabela
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(bAlterarPerfil, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(bSair, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(bRemoverPerfil, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
@@ -211,15 +221,24 @@ public class JogadorPerfil extends javax.swing.JFrame implements IAtualizaTabela
         new CreateEditPerfil(this.ourbattle, null, this.jogador, this);
     }//GEN-LAST:event_bAddPerfilActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void bSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bSairActionPerformed
         this.dispose();
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_bSairActionPerformed
+
+    private void bRemoverPerfilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bRemoverPerfilActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_bRemoverPerfilActionPerformed
+
+    private void bAlterarPerfilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bAlterarPerfilActionPerformed
+        Perfil perfil = FindPerfilById.findPerfilById((String) tabelaPerfis.getValueAt(tabelaPerfis.getSelectedRow(), 0), ourbattle.getPerfis());
+        new CreateEditPerfil(this.ourbattle, perfil, this.jogador, this);
+    }//GEN-LAST:event_bAlterarPerfilActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton bAddPerfil;
     private javax.swing.JButton bAlterarPerfil;
     private javax.swing.JButton bRemoverPerfil;
-    private javax.swing.JButton jButton2;
+    private javax.swing.JButton bSair;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

@@ -4,6 +4,7 @@
  */
 package gui;
 
+import actions.CarregarJogos;
 import actions.IAtualizaTabela;
 import classes.Jogador;
 import classes.Jogo;
@@ -30,6 +31,7 @@ public class CreateEditPerfil extends javax.swing.JFrame {
         initComponents();
         this.setLocationRelativeTo(null);
         this.inicializaTela();
+        CarregarJogos.carregaComboBoxJogos(cJogo, ourbattle.getJogos());
         this.setVisible(true);
     }
 

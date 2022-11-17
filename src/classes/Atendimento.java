@@ -22,12 +22,12 @@ public class Atendimento implements Serializable, IReturnRow{
     private Funcionario funcionario;
     private boolean solucionado;
 
-    public Atendimento(String descricao, String feedback, boolean solucionado) {
+    public Atendimento(Jogador jogador, Organizacao organizacao, String descricao) {
         UUID uuid = UUID.randomUUID();
         this.id = uuid.toString();
         this.descricao = descricao;
-        this.feedback = feedback;
-        this.solucionado = solucionado;
+        this.jogador = jogador;
+        this.organizacao = organizacao;
     }
 
     public String getDescricao() {
