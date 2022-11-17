@@ -21,14 +21,13 @@ public class ExibeJogador extends javax.swing.JFrame {
     public ExibeJogador(Jogador jogador) {
         this.jogador = jogador;
         initComponents();
+        this.inicializaTela();
         this.setLocationRelativeTo(null);
         this.setVisible(true);
-        this.inicializaTela();
     }
 
     private void inicializaTela(){
         if(this.jogador!= null){
-            this.jogador.getNome();
             this.textNome.setText(this.jogador.getNome());
             this.textUsername.setText(this.jogador.getUsername());
             this.textEmail.setText(this.jogador.getEmail());

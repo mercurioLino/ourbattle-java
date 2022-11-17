@@ -4,6 +4,8 @@
  */
 package gui;
 
+import actions.AtualizaTabela;
+import actions.IAtualizaTabela;
 import classes.Jogador;
 import classes.OurBattle;
 
@@ -11,7 +13,7 @@ import classes.OurBattle;
  *
  * @author Windows
  */
-public class TorneiosJogador extends javax.swing.JFrame {
+public class TorneiosJogador extends javax.swing.JFrame implements IAtualizaTabela {
 
     /**
      * Creates new form TorneiosOrganizador
@@ -22,10 +24,17 @@ public class TorneiosJogador extends javax.swing.JFrame {
         this.ourbattle = ourbattle;
         this.jogador = jogador;
         initComponents();
+        this.atualizaTabela();
         this.setLocationRelativeTo(null);
         this.setVisible(true);
     }
 
+    @Override
+    public void atualizaTabela() {
+        AtualizaTabela.atualizaTabela(this.ourbattle.getTorneios(), this.tabelaTorneios);
+    }
+
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -36,7 +45,7 @@ public class TorneiosJogador extends javax.swing.JFrame {
     private void initComponents() {
 
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tabelaTorneios = new javax.swing.JTable();
         jButton2 = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
@@ -47,35 +56,37 @@ public class TorneiosJogador extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jCheckBox1 = new javax.swing.JCheckBox();
         jLabel4 = new javax.swing.JLabel();
-        bInscreverEquipe = new javax.swing.JButton();
+        buttonInscrever = new javax.swing.JButton();
+        buttonInscreverEquipe = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Torneios");
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tabelaTorneios.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "ID", "Nome", "Data", "Hora"
+                "ID", "Nome", "Data", "Hora", "Organizacao"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false
+                false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane1.setViewportView(jTable1);
-        if (jTable1.getColumnModel().getColumnCount() > 0) {
-            jTable1.getColumnModel().getColumn(0).setMinWidth(0);
-            jTable1.getColumnModel().getColumn(0).setPreferredWidth(0);
-            jTable1.getColumnModel().getColumn(0).setMaxWidth(0);
-            jTable1.getColumnModel().getColumn(1).setResizable(false);
-            jTable1.getColumnModel().getColumn(2).setResizable(false);
-            jTable1.getColumnModel().getColumn(3).setResizable(false);
+        jScrollPane1.setViewportView(tabelaTorneios);
+        if (tabelaTorneios.getColumnModel().getColumnCount() > 0) {
+            tabelaTorneios.getColumnModel().getColumn(0).setMinWidth(0);
+            tabelaTorneios.getColumnModel().getColumn(0).setPreferredWidth(0);
+            tabelaTorneios.getColumnModel().getColumn(0).setMaxWidth(0);
+            tabelaTorneios.getColumnModel().getColumn(1).setResizable(false);
+            tabelaTorneios.getColumnModel().getColumn(2).setResizable(false);
+            tabelaTorneios.getColumnModel().getColumn(3).setResizable(false);
+            tabelaTorneios.getColumnModel().getColumn(4).setResizable(false);
         }
 
         jButton2.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
@@ -141,11 +152,19 @@ public class TorneiosJogador extends javax.swing.JFrame {
         jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel4.setText("Torneios");
 
-        bInscreverEquipe.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        bInscreverEquipe.setText("Inscrever Equipe");
-        bInscreverEquipe.addActionListener(new java.awt.event.ActionListener() {
+        buttonInscrever.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        buttonInscrever.setText("Inscrever-se");
+        buttonInscrever.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                bInscreverEquipeActionPerformed(evt);
+                buttonInscreverActionPerformed(evt);
+            }
+        });
+
+        buttonInscreverEquipe.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        buttonInscreverEquipe.setText("Inscrever Equipe");
+        buttonInscreverEquipe.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonInscreverEquipeActionPerformed(evt);
             }
         });
 
@@ -156,22 +175,30 @@ public class TorneiosJogador extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 494, Short.MAX_VALUE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 494, Short.MAX_VALUE)
+                            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 0, Short.MAX_VALUE)))
+                        .addContainerGap())
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel4)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(bInscreverEquipe))
-                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap())
+                        .addComponent(buttonInscrever)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(buttonInscreverEquipe)
+                        .addGap(11, 11, 11))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
-                    .addComponent(bInscreverEquipe, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(buttonInscrever, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(buttonInscreverEquipe, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -184,16 +211,22 @@ public class TorneiosJogador extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void bInscreverEquipeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bInscreverEquipeActionPerformed
-        new InscreverEquipe(this.ourbattle, this.jogador);
-    }//GEN-LAST:event_bInscreverEquipeActionPerformed
+    
+    private void buttonInscreverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonInscreverActionPerformed
+        new InscreverJogador(this.ourbattle, this.jogador);
+    }//GEN-LAST:event_buttonInscreverActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
        this.dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
 
+    private void buttonInscreverEquipeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonInscreverEquipeActionPerformed
+        new InscreverEquipe(this.ourbattle, this.jogador);
+    }//GEN-LAST:event_buttonInscreverEquipeActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton bInscreverEquipe;
+    private javax.swing.JButton buttonInscrever;
+    private javax.swing.JButton buttonInscreverEquipe;
     private javax.swing.JButton jButton2;
     private javax.swing.JCheckBox jCheckBox1;
     private javax.swing.JLabel jLabel1;
@@ -203,8 +236,8 @@ public class TorneiosJogador extends javax.swing.JFrame {
     private com.toedter.calendar.JMonthChooser jMonthChooser1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
     private javax.swing.JTextField jTextField1;
     private com.toedter.calendar.JYearChooser jYearChooser1;
+    private javax.swing.JTable tabelaTorneios;
     // End of variables declaration//GEN-END:variables
 }

@@ -22,6 +22,8 @@ public class OurBattle implements Serializable{
     TreeSet<Jogador> jogadores = new TreeSet<>();
     TreeSet<Partida> partidas = new TreeSet<>();
     TreeSet<Torneio> torneios = new TreeSet<>();
+    TreeSet<TorneioEquipe> torneiosEquipe = new TreeSet<>();
+    TreeSet<TorneioIndividual> torneiosIndividual = new TreeSet<>();
     TreeSet<Usuario> usuarios = new TreeSet<>();
     TreeSet<Perfil> perfis = new TreeSet<>();
 
@@ -122,4 +124,22 @@ public class OurBattle implements Serializable{
     public void setPerfis(TreeSet<Perfil> perfis) {
         this.perfis = perfis;
     }
+
+    public TreeSet<TorneioEquipe> getTorneiosEquipe() {
+        return torneiosEquipe;
+    }
+
+    public void setTorneiosEquipe(TreeSet<TorneioEquipe> torneiosEquipe) {
+        this.torneiosEquipe = torneiosEquipe;
+    }
+
+    public TreeSet<TorneioIndividual> getTorneiosIndividual() {
+        return torneiosIndividual;
+    }
+
+    public void setTorneiosIndividual(TreeSet<TorneioIndividual> torneiosIndividual) {
+        this.torneiosIndividual = torneiosIndividual;
+    }
+    
+    
 }

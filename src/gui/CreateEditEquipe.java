@@ -22,13 +22,11 @@ public class CreateEditEquipe extends javax.swing.JFrame {
     Jogador jogador;
     IAtualizaTabela attTabela;
     Equipe equipe;
-    javax.swing.JTable tabela;
-    public CreateEditEquipe(OurBattle ourbattle, Equipe equipe, Jogador jogador, IAtualizaTabela attTabela, javax.swing.JTable tabela) {
+    public CreateEditEquipe(OurBattle ourbattle, Equipe equipe, Jogador jogador, IAtualizaTabela attTabela) {
         this.equipe = equipe;
         this.attTabela = attTabela;
         this.ourbattle = ourbattle;
         this.jogador = jogador;
-        this.tabela = tabela;
         initComponents();
         this.setLocationRelativeTo(null);
         this.inicializaTela();
@@ -154,8 +152,7 @@ public class CreateEditEquipe extends javax.swing.JFrame {
                 this.equipe.setTag(tag);
             }
         }
-        AtualizaTabela.atualizaTabela(this.ourbattle.getEquipes(), tabela);
-        //this.attTabela.atualizaTabela();
+        this.attTabela.atualizaTabela();
         salvar(this.ourbattle);
         this.dispose();
     }//GEN-LAST:event_jButton1ActionPerformed

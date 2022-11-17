@@ -202,7 +202,7 @@ public class MenuEquipesJogador extends javax.swing.JFrame implements IAtualizaT
     }//GEN-LAST:event_buttonSairActionPerformed
 
     private void buttonCreateEquipeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonCreateEquipeActionPerformed
-        new CreateEditEquipe(this.ourbattle, null, this.jogador, this, this.tabelaEquipes);
+        new CreateEditEquipe(this.ourbattle, null, this.jogador, this);
     }//GEN-LAST:event_buttonCreateEquipeActionPerformed
 
     private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
@@ -211,7 +211,7 @@ public class MenuEquipesJogador extends javax.swing.JFrame implements IAtualizaT
 
     private void buttonAlterarEquipeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonAlterarEquipeActionPerformed
         Equipe equipe = FindEquipeById.findEquipeById((String) this.tabelaEquipes.getValueAt(this.tabelaEquipes.getSelectedRow(), 0), this.ourbattle.getEquipes());
-        new CreateEditEquipe(this.ourbattle, equipe, null, this, this.tabelaEquipes);
+        new CreateEditEquipe(this.ourbattle, equipe, null, this);
     }//GEN-LAST:event_buttonAlterarEquipeActionPerformed
 
 
