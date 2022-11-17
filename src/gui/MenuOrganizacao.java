@@ -14,9 +14,9 @@ import static io.Salvar.salvar;
  */
 public class MenuOrganizacao extends javax.swing.JFrame {
 
-    OurBattle ourbattle; 
+    OurBattle ourbattle;
     Organizacao organizacao;
-            
+
     public MenuOrganizacao(OurBattle ourbattle, Organizacao organizacao) {
         this.ourbattle = ourbattle;
         this.organizacao = organizacao;
@@ -102,9 +102,14 @@ public class MenuOrganizacao extends javax.swing.JFrame {
         jLabel6.setText("Funcionários");
 
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/Usuario.png"))); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/Organizador.png"))); // NOI18N
         jLabel1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         jLabel1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jLabel1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                jLabel1MouseReleased(evt);
+            }
+        });
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel2.setText("Conta");
@@ -249,18 +254,20 @@ public class MenuOrganizacao extends javax.swing.JFrame {
     }//GEN-LAST:event_buttonFuncionariosActionPerformed
 
     private void buttonOrganizacoesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonOrganizacoesActionPerformed
-       new ListOrganizacoes(this.ourbattle);
+        new ListOrganizacoes(this.ourbattle);
     }//GEN-LAST:event_buttonOrganizacoesActionPerformed
 
     private void buttonPerfisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonPerfisActionPerformed
-       new ListPerfis(this.ourbattle);
+        new ListPerfis(this.ourbattle);
     }//GEN-LAST:event_buttonPerfisActionPerformed
 
     private void buttonTorneiosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonTorneiosActionPerformed
         new TorneiosOrganizador(this.ourbattle, this.organizacao);
     }//GEN-LAST:event_buttonTorneiosActionPerformed
 
-
+    private void jLabel1MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseReleased
+        new CreateEditOrganizacao(this.ourbattle, this.organizacao);
+    }//GEN-LAST:event_jLabel1MouseReleased
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton buttonEquipes;

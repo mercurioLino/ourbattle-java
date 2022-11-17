@@ -67,7 +67,7 @@ public class CreateEditOrganizacao extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel1.setText("Cadastro de Organização");
+        jLabel1.setText("Dados da Organização");
 
         jLabel2.setText("Razão Social:");
 
