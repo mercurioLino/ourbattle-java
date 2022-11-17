@@ -5,41 +5,26 @@
 package gui;
 
 import actions.AtualizaTabela;
-import actions.FindJogadorById;
 import classes.Jogador;
 import classes.OurBattle;
-import javax.swing.ListSelectionModel;
-import javax.swing.event.ListSelectionEvent;
-import javax.swing.event.ListSelectionListener;
 
 /**
  *
  * @author Windows
  */
-public class Jogadores extends javax.swing.JFrame {
+public class Organizacoes extends javax.swing.JFrame {
 
     /**
      * Creates new form TorneiosOrganizador
      */
     OurBattle ourbattle; 
     Jogador jogador;
-    public Jogadores(OurBattle ourbattle) {
+    public Organizacoes(OurBattle ourbattle) {
         this.ourbattle = ourbattle;
         initComponents();
         this.setLocationRelativeTo(null);
         this.setVisible(true);
-        AtualizaTabela.atualizaTabela(this.ourbattle.getJogadores(), this.tabelaJogadores);
-    }
-    
-    private void iniciaTabela(){
-        this.tabelaJogadores.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-        this.tabelaJogadores.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
-            @Override
-            public void valueChanged(ListSelectionEvent e) {
-                Jogador jogador = FindJogadorById.findJogadorById((String) tabelaJogadores.getValueAt(tabelaJogadores.getSelectedRow(), 0), ourbattle.getJogadores());
-                new ExibeJogador(jogador);
-            }
-        });
+        AtualizaTabela.atualizaTabela(this.ourbattle.getOrganizacoes(), this.tabelaOrganizacoes);
     }
     
     @SuppressWarnings("unchecked")
@@ -47,7 +32,7 @@ public class Jogadores extends javax.swing.JFrame {
     private void initComponents() {
 
         jScrollPane1 = new javax.swing.JScrollPane();
-        tabelaJogadores = new javax.swing.JTable();
+        tabelaOrganizacoes = new javax.swing.JTable();
         jButton2 = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
@@ -57,33 +42,34 @@ public class Jogadores extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Gerenciar Torneios");
 
-        tabelaJogadores.setModel(new javax.swing.table.DefaultTableModel(
+        tabelaOrganizacoes.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "ID", "Nome", "Username", "Pontuação"
+                "ID", "Razão Social", "Nome Fantasia", "E-mail", "CNPJ"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false
+                false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit [columnIndex];
             }
         });
-        tabelaJogadores.setColumnSelectionAllowed(true);
-        tabelaJogadores.getTableHeader().setReorderingAllowed(false);
-        jScrollPane1.setViewportView(tabelaJogadores);
-        tabelaJogadores.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
-        if (tabelaJogadores.getColumnModel().getColumnCount() > 0) {
-            tabelaJogadores.getColumnModel().getColumn(0).setMinWidth(0);
-            tabelaJogadores.getColumnModel().getColumn(0).setPreferredWidth(0);
-            tabelaJogadores.getColumnModel().getColumn(0).setMaxWidth(0);
-            tabelaJogadores.getColumnModel().getColumn(1).setResizable(false);
-            tabelaJogadores.getColumnModel().getColumn(2).setResizable(false);
-            tabelaJogadores.getColumnModel().getColumn(3).setResizable(false);
+        tabelaOrganizacoes.setColumnSelectionAllowed(true);
+        tabelaOrganizacoes.getTableHeader().setReorderingAllowed(false);
+        jScrollPane1.setViewportView(tabelaOrganizacoes);
+        tabelaOrganizacoes.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        if (tabelaOrganizacoes.getColumnModel().getColumnCount() > 0) {
+            tabelaOrganizacoes.getColumnModel().getColumn(0).setMinWidth(0);
+            tabelaOrganizacoes.getColumnModel().getColumn(0).setPreferredWidth(0);
+            tabelaOrganizacoes.getColumnModel().getColumn(0).setMaxWidth(0);
+            tabelaOrganizacoes.getColumnModel().getColumn(1).setResizable(false);
+            tabelaOrganizacoes.getColumnModel().getColumn(2).setResizable(false);
+            tabelaOrganizacoes.getColumnModel().getColumn(3).setResizable(false);
+            tabelaOrganizacoes.getColumnModel().getColumn(4).setResizable(false);
         }
 
         jButton2.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
@@ -117,7 +103,7 @@ public class Jogadores extends javax.swing.JFrame {
         );
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel4.setText("Jogadores");
+        jLabel4.setText("Organizacoes");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -159,6 +145,6 @@ public class Jogadores extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField jTextField1;
-    private javax.swing.JTable tabelaJogadores;
+    private javax.swing.JTable tabelaOrganizacoes;
     // End of variables declaration//GEN-END:variables
 }
