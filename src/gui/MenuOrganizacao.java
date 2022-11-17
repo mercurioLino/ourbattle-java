@@ -105,11 +105,21 @@ public class MenuOrganizacao extends javax.swing.JFrame {
         jLabel2.setText("Conta");
 
         buttonPerfis.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/Modalidades.png"))); // NOI18N
+        buttonPerfis.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonPerfisActionPerformed(evt);
+            }
+        });
 
         jLabel7.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel7.setText("Organizações");
 
         buttonOrganizacoes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/Organizações.png"))); // NOI18N
+        buttonOrganizacoes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonOrganizacoesActionPerformed(evt);
+            }
+        });
 
         jLabel8.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel8.setText("Perfis");
@@ -222,7 +232,7 @@ public class MenuOrganizacao extends javax.swing.JFrame {
     }//GEN-LAST:event_buttonSairActionPerformed
 
     private void buttonEquipesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonEquipesActionPerformed
-        
+        new ListEquipes(this.ourbattle);
     }//GEN-LAST:event_buttonEquipesActionPerformed
 
     private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
@@ -232,6 +242,15 @@ public class MenuOrganizacao extends javax.swing.JFrame {
     private void buttonFuncionariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonFuncionariosActionPerformed
         new ListFuncionarios(this.ourbattle, this.organizacao);
     }//GEN-LAST:event_buttonFuncionariosActionPerformed
+
+    private void buttonOrganizacoesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonOrganizacoesActionPerformed
+       new ListOrganizacoes(this.ourbattle);
+    }//GEN-LAST:event_buttonOrganizacoesActionPerformed
+
+    private void buttonPerfisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonPerfisActionPerformed
+       new ListPerfis(this.ourbattle);
+    }//GEN-LAST:event_buttonPerfisActionPerformed
+
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
