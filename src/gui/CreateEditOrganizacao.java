@@ -4,25 +4,39 @@
  */
 package gui;
 
-import static actions.ContainsUserByMail.containsJogadorByMail;
 import static io.Salvar.salvar;
 import classes.Organizacao;
 import classes.OurBattle;
 import javax.swing.JOptionPane;
+import static actions.ContainsUserByMail.containsUserByMail;
 
 /**
  *
  * @author Windows
  */
-public class CadastroOrganizacao extends javax.swing.JFrame {
+public class CreateEditOrganizacao extends javax.swing.JFrame {
 
     OurBattle ourbattle;
+    Organizacao organizacao;
 
-    public CadastroOrganizacao(OurBattle ourbattle) {
+    public CreateEditOrganizacao(OurBattle ourbattle, Organizacao organizacao) {
+        this.organizacao = organizacao;
         this.ourbattle = ourbattle;
         initComponents();
+        this.inicializaTela();
         this.setLocationRelativeTo(null);
         this.setVisible(true);
+    }
+
+    private void inicializaTela() {
+        if (this.organizacao != null) {
+            this.textRazaoSocial.setText(this.organizacao.getRazaoSocial());
+            this.textNomeFantasia.setText(this.organizacao.getNomeFantasia());
+            this.textCnpj.setText(this.organizacao.getCnpj());
+            this.textEmail.setText(this.organizacao.getEmail());
+            this.textPassword.setText(this.organizacao.getSenha());
+            this.textConfirmPassword.setText(this.organizacao.getSenha());
+        }
     }
 
     /**
@@ -166,13 +180,27 @@ public class CadastroOrganizacao extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Preencha todos os campos para realizar cadastro", "OurBattle.gg", JOptionPane.ERROR_MESSAGE);
         } else if (!password.equals(confirmPassword)) {
             JOptionPane.showMessageDialog(null, "As senhas devem ser iguais", "OurBattle.gg", JOptionPane.ERROR_MESSAGE);
-        } else if (containsJogadorByMail(email, this.ourbattle.getUsuarios())) {
-            JOptionPane.showMessageDialog(null, "E-mail ja cadastrado", "OurBattle.gg", JOptionPane.ERROR_MESSAGE);
+        } else if (containsUserByMail(email, this.ourbattle.getUsuarios())) {
+            if (organizacao == null) {
+                JOptionPane.showMessageDialog(null, "E-mail ja cadastrado", "OurBattle.gg", JOptionPane.ERROR_MESSAGE);
+            } else if (!email.equals(this.organizacao.getEmail())) {
+                JOptionPane.showMessageDialog(null, "E-mail ja cadastrado", "OurBattle.gg", JOptionPane.ERROR_MESSAGE);
+            }
         } else {
-            Organizacao organizacao = new Organizacao(cnpj, razaoSocial, nomeFantasia, email, password, "Organizacao");
-            this.ourbattle.getUsuarios().add(organizacao);
+            if (this.organizacao == null) {
+                Organizacao organizacao = new Organizacao(cnpj, razaoSocial, nomeFantasia, email, password, "Organizacao");
+                this.ourbattle.getOrganizacoes().add(organizacao);
+                this.ourbattle.getUsuarios().add(organizacao);
+            } else {
+                this.organizacao.setRazaoSocial(razaoSocial);
+                this.organizacao.setCnpj(cnpj);
+                this.organizacao.setEmail(email);
+                this.organizacao.setNomeFantasia(nomeFantasia);
+                this.organizacao.setSenha(password);
+            }
             salvar(ourbattle);
         }
+
         this.dispose();
     }//GEN-LAST:event_buttonCadastrarActionPerformed
 

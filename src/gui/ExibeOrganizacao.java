@@ -4,22 +4,18 @@
  */
 package gui;
 
-import static io.Salvar.salvar;
-import classes.Jogador;
-import classes.OurBattle;
-import javax.swing.JOptionPane;
-import static actions.ContainsUserByMail.containsUserByMail;
+import classes.Organizacao;
 
 /**
  *
  * @author Windows
  */
-public class ExibeJogador extends javax.swing.JFrame {
+public class ExibeOrganizacao extends javax.swing.JFrame {
 
-    Jogador jogador;
+    Organizacao organizacao;
     
-    public ExibeJogador(Jogador jogador) {
-        this.jogador = jogador;
+    public ExibeOrganizacao(Organizacao organizacao) {
+        this.organizacao = organizacao;
         initComponents();
         this.setLocationRelativeTo(null);
         this.setVisible(true);
@@ -27,12 +23,11 @@ public class ExibeJogador extends javax.swing.JFrame {
     }
 
     private void inicializaTela(){
-        if(this.jogador!= null){
-            this.jogador.getNome();
-            this.textNome.setText(this.jogador.getNome());
-            this.textUsername.setText(this.jogador.getUsername());
-            this.textEmail.setText(this.jogador.getEmail());
-            this.textPontuacao.setText(this.jogador.getPontuacao() + "");
+        if(this.organizacao!= null){
+            this.textRazaoSocial.setText(this.organizacao.getRazaoSocial());
+            this.textCNPJ.setText(this.organizacao.getCnpj());
+            this.textNomeFantasia.setText(this.organizacao.getNomeFantasia());
+            this.textEmail.setText(this.organizacao.getEmail());
         }
     }
     @SuppressWarnings("unchecked")
@@ -41,29 +36,29 @@ public class ExibeJogador extends javax.swing.JFrame {
 
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        textNome = new javax.swing.JTextField();
+        textRazaoSocial = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
-        textEmail = new javax.swing.JTextField();
+        textNomeFantasia = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         buttonCancelar = new javax.swing.JButton();
-        textUsername = new javax.swing.JTextField();
+        textCNPJ = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
-        textPontuacao = new javax.swing.JTextField();
+        textEmail = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel1.setText("Dados do Jogador");
+        jLabel1.setText("Dados da Organização");
 
-        jLabel2.setText("Nome:");
+        jLabel2.setText("Razao Social:");
 
-        textNome.setEditable(false);
+        textRazaoSocial.setEditable(false);
 
-        jLabel3.setText("E-mail:");
+        jLabel3.setText("Nome Fantasia:");
 
-        textEmail.setEditable(false);
+        textNomeFantasia.setEditable(false);
 
-        jLabel4.setText("Pontuação:");
+        jLabel4.setText("E-mail:");
 
         buttonCancelar.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         buttonCancelar.setText("Voltar");
@@ -73,21 +68,11 @@ public class ExibeJogador extends javax.swing.JFrame {
             }
         });
 
-        textUsername.setEditable(false);
-        textUsername.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                textUsernameActionPerformed(evt);
-            }
-        });
+        textCNPJ.setEditable(false);
 
-        jLabel6.setText("Username:");
+        jLabel6.setText("CNPJ:");
 
-        textPontuacao.setEditable(false);
-        textPontuacao.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                textPontuacaoActionPerformed(evt);
-            }
-        });
+        textEmail.setEditable(false);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -104,15 +89,15 @@ public class ExibeJogador extends javax.swing.JFrame {
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel1)
-                                    .addComponent(textEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 286, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(textNome, javax.swing.GroupLayout.PREFERRED_SIZE, 286, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(textNomeFantasia, javax.swing.GroupLayout.PREFERRED_SIZE, 286, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(textRazaoSocial, javax.swing.GroupLayout.PREFERRED_SIZE, 286, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(textUsername, javax.swing.GroupLayout.PREFERRED_SIZE, 286, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(textCNPJ, javax.swing.GroupLayout.PREFERRED_SIZE, 286, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(0, 0, Short.MAX_VALUE))
-                            .addComponent(textPontuacao))))
+                            .addComponent(textEmail))))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -123,20 +108,20 @@ public class ExibeJogador extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(textNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(textRazaoSocial, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel3)
                 .addGap(1, 1, 1)
-                .addComponent(textEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(textNomeFantasia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel6)
                 .addGap(1, 1, 1)
-                .addComponent(textUsername, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(textCNPJ, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel4)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(textPontuacao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addComponent(textEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(buttonCancelar)
                 .addContainerGap())
         );
@@ -148,14 +133,6 @@ public class ExibeJogador extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_buttonCancelarActionPerformed
 
-    private void textUsernameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textUsernameActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_textUsernameActionPerformed
-
-    private void textPontuacaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textPontuacaoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_textPontuacaoActionPerformed
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton buttonCancelar;
@@ -164,9 +141,9 @@ public class ExibeJogador extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JTextField textCNPJ;
     private javax.swing.JTextField textEmail;
-    private javax.swing.JTextField textNome;
-    private javax.swing.JTextField textPontuacao;
-    private javax.swing.JTextField textUsername;
+    private javax.swing.JTextField textNomeFantasia;
+    private javax.swing.JTextField textRazaoSocial;
     // End of variables declaration//GEN-END:variables
 }

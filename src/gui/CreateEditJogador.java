@@ -4,11 +4,11 @@
  */
 package gui;
 
-import static actions.ContainsUserByMail.containsJogadorByMail;
 import static io.Salvar.salvar;
 import classes.Jogador;
 import classes.OurBattle;
 import javax.swing.JOptionPane;
+import static actions.ContainsUserByMail.containsUserByMail;
 
 /**
  *
@@ -183,7 +183,7 @@ public class CreateEditJogador extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Preencha todos os campos para realizar cadastro", "OurBattle.gg", JOptionPane.ERROR_MESSAGE);
         } else if (!password.equals(confirmPassword)) {
             JOptionPane.showMessageDialog(null, "As senhas devem ser iguais", "OurBattle.gg", JOptionPane.ERROR_MESSAGE);
-        } else if(containsJogadorByMail(email, this.ourbattle.getUsuarios())) {
+        } else if(containsUserByMail(email, this.ourbattle.getUsuarios())) {
             if(jogador == null){
                 JOptionPane.showMessageDialog(null, "E-mail ja cadastrado", "OurBattle.gg", JOptionPane.ERROR_MESSAGE);
             } else if (!email.equals(this.jogador.getEmail())){
@@ -195,7 +195,6 @@ public class CreateEditJogador extends javax.swing.JFrame {
                 this.ourbattle.getJogadores().add(jogador);
                 this.ourbattle.getUsuarios().add(this.jogador);
             } else{
-                
                 this.jogador.setEmail(email);
                 this.jogador.setNome(nome);
                 this.jogador.setSenha(password);

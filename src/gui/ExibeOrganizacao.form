@@ -35,17 +35,17 @@
                           <Group type="102" attributes="0">
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Component id="jLabel1" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="textEmail" alignment="0" min="-2" pref="286" max="-2" attributes="0"/>
-                                  <Component id="textNome" alignment="0" min="-2" pref="286" max="-2" attributes="0"/>
+                                  <Component id="textNomeFantasia" alignment="0" min="-2" pref="286" max="-2" attributes="0"/>
+                                  <Component id="textRazaoSocial" alignment="0" min="-2" pref="286" max="-2" attributes="0"/>
                                   <Component id="jLabel3" alignment="0" min="-2" pref="116" max="-2" attributes="0"/>
                                   <Component id="jLabel2" alignment="0" min="-2" pref="124" max="-2" attributes="0"/>
                                   <Component id="jLabel4" alignment="0" min="-2" pref="113" max="-2" attributes="0"/>
-                                  <Component id="textUsername" min="-2" pref="286" max="-2" attributes="0"/>
+                                  <Component id="textCNPJ" min="-2" pref="286" max="-2" attributes="0"/>
                                   <Component id="jLabel6" min="-2" pref="139" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                           </Group>
-                          <Component id="textPontuacao" alignment="0" max="32767" attributes="0"/>
+                          <Component id="textEmail" alignment="0" max="32767" attributes="0"/>
                       </Group>
                   </Group>
               </Group>
@@ -61,20 +61,20 @@
               <EmptySpace max="-2" attributes="0"/>
               <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="textNome" min="-2" max="-2" attributes="0"/>
+              <Component id="textRazaoSocial" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="1" max="-2" attributes="0"/>
-              <Component id="textEmail" min="-2" max="-2" attributes="0"/>
+              <Component id="textNomeFantasia" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="unrelated" max="32767" attributes="0"/>
               <Component id="jLabel6" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="1" max="-2" attributes="0"/>
-              <Component id="textUsername" min="-2" max="-2" attributes="0"/>
+              <Component id="textCNPJ" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
               <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="textPontuacao" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
+              <Component id="textEmail" min="-2" max="-2" attributes="0"/>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Component id="buttonCancelar" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
@@ -87,32 +87,32 @@
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Segoe UI" size="18" style="1"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="Dados do Jogador"/>
+        <Property name="text" type="java.lang.String" value="Dados da Organiza&#xe7;&#xe3;o"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel2">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Nome:"/>
+        <Property name="text" type="java.lang.String" value="Razao Social:"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="textNome">
+    <Component class="javax.swing.JTextField" name="textRazaoSocial">
       <Properties>
         <Property name="editable" type="boolean" value="false"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel3">
       <Properties>
-        <Property name="text" type="java.lang.String" value="E-mail:"/>
+        <Property name="text" type="java.lang.String" value="Nome Fantasia:"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="textEmail">
+    <Component class="javax.swing.JTextField" name="textNomeFantasia">
       <Properties>
         <Property name="editable" type="boolean" value="false"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel4">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Pontua&#xe7;&#xe3;o:"/>
+        <Property name="text" type="java.lang.String" value="E-mail:"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JButton" name="buttonCancelar">
@@ -126,26 +126,20 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="buttonCancelarActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JTextField" name="textUsername">
+    <Component class="javax.swing.JTextField" name="textCNPJ">
       <Properties>
         <Property name="editable" type="boolean" value="false"/>
       </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="textUsernameActionPerformed"/>
-      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel6">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Username:"/>
+        <Property name="text" type="java.lang.String" value="CNPJ:"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="textPontuacao">
+    <Component class="javax.swing.JTextField" name="textEmail">
       <Properties>
         <Property name="editable" type="boolean" value="false"/>
       </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="textPontuacaoActionPerformed"/>
-      </Events>
     </Component>
   </SubComponents>
 </Form>

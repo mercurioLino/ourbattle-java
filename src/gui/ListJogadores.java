@@ -5,34 +5,38 @@
 package gui;
 
 import actions.AtualizaTabela;
+import actions.FindJogadorById;
 import classes.Jogador;
 import classes.OurBattle;
+import javax.swing.ListSelectionModel;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
 
 /**
  *
  * @author Windows
  */
-public class Organizacoes extends javax.swing.JFrame {
+public class ListJogadores extends javax.swing.JFrame {
 
     /**
      * Creates new form TorneiosOrganizador
      */
     OurBattle ourbattle; 
     Jogador jogador;
-    public Organizacoes(OurBattle ourbattle) {
+    public ListJogadores(OurBattle ourbattle) {
         this.ourbattle = ourbattle;
         initComponents();
         this.setLocationRelativeTo(null);
         this.setVisible(true);
-        AtualizaTabela.atualizaTabela(this.ourbattle.getOrganizacoes(), this.tabelaOrganizacoes);
+        AtualizaTabela.atualizaTabela(this.ourbattle.getJogadores(), this.tabelaJogadores);
     }
-    
+        
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
         jScrollPane1 = new javax.swing.JScrollPane();
-        tabelaOrganizacoes = new javax.swing.JTable();
+        tabelaJogadores = new javax.swing.JTable();
         jButton2 = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
@@ -42,38 +46,45 @@ public class Organizacoes extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Gerenciar Torneios");
 
-        tabelaOrganizacoes.setModel(new javax.swing.table.DefaultTableModel(
+        tabelaJogadores.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "ID", "Razão Social", "Nome Fantasia", "E-mail", "CNPJ"
+                "ID", "Nome", "Username", "Pontuação"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false
+                false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit [columnIndex];
             }
         });
-        tabelaOrganizacoes.setColumnSelectionAllowed(true);
-        tabelaOrganizacoes.getTableHeader().setReorderingAllowed(false);
-        jScrollPane1.setViewportView(tabelaOrganizacoes);
-        tabelaOrganizacoes.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
-        if (tabelaOrganizacoes.getColumnModel().getColumnCount() > 0) {
-            tabelaOrganizacoes.getColumnModel().getColumn(0).setMinWidth(0);
-            tabelaOrganizacoes.getColumnModel().getColumn(0).setPreferredWidth(0);
-            tabelaOrganizacoes.getColumnModel().getColumn(0).setMaxWidth(0);
-            tabelaOrganizacoes.getColumnModel().getColumn(1).setResizable(false);
-            tabelaOrganizacoes.getColumnModel().getColumn(2).setResizable(false);
-            tabelaOrganizacoes.getColumnModel().getColumn(3).setResizable(false);
-            tabelaOrganizacoes.getColumnModel().getColumn(4).setResizable(false);
+        tabelaJogadores.getTableHeader().setReorderingAllowed(false);
+        tabelaJogadores.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tabelaJogadoresMouseClicked(evt);
+            }
+        });
+        jScrollPane1.setViewportView(tabelaJogadores);
+        if (tabelaJogadores.getColumnModel().getColumnCount() > 0) {
+            tabelaJogadores.getColumnModel().getColumn(0).setMinWidth(0);
+            tabelaJogadores.getColumnModel().getColumn(0).setPreferredWidth(0);
+            tabelaJogadores.getColumnModel().getColumn(0).setMaxWidth(0);
+            tabelaJogadores.getColumnModel().getColumn(1).setResizable(false);
+            tabelaJogadores.getColumnModel().getColumn(2).setResizable(false);
+            tabelaJogadores.getColumnModel().getColumn(3).setResizable(false);
         }
 
         jButton2.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jButton2.setText("Sair");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Filtros"));
 
@@ -103,7 +114,7 @@ public class Organizacoes extends javax.swing.JFrame {
         );
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel4.setText("Organizacoes");
+        jLabel4.setText("Jogadores");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -138,6 +149,17 @@ public class Organizacoes extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+       this.dispose();
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void tabelaJogadoresMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabelaJogadoresMouseClicked
+        if(evt.getClickCount() == 2 && this.tabelaJogadores.getSelectedRow() != -1){
+            Jogador jogador = FindJogadorById.findJogadorById((String) tabelaJogadores.getValueAt(tabelaJogadores.getSelectedRow(), 0), ourbattle.getJogadores());
+            new ExibeJogador(jogador);
+        }
+    }//GEN-LAST:event_tabelaJogadoresMouseClicked
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
@@ -145,6 +167,6 @@ public class Organizacoes extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField jTextField1;
-    private javax.swing.JTable tabelaOrganizacoes;
+    private javax.swing.JTable tabelaJogadores;
     // End of variables declaration//GEN-END:variables
 }

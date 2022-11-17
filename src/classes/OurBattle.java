@@ -26,8 +26,21 @@ public class OurBattle implements Serializable{
     TreeSet<Perfil> perfis = new TreeSet<>();
 
     public OurBattle() {
+        this.inicializaJogos();
     }
      
+    private void inicializaJogos(){
+        Jogo jogo1 = new Jogo("LOL", "MOBA", "Jogo MOBA 5x5 da RIOT");
+        Jogo jogo2 = new Jogo("CS:GO", "FPS", "Jogo FPS 5x5 da VALVE");
+        Jogo jogo3 = new Jogo("TFT", "Autochess", "Jogo Autochess da RIOT");
+        Jogo jogo4 = new Jogo("Valorant", "FPS", "Jogo FPS 5x5 da RIOT");
+        Jogo jogo5 = new Jogo("Fortnite", "Battle Royale", "Jogo Battle Royale da EPIC GAMES");
+        this.jogos.add(jogo1);
+        this.jogos.add(jogo2);
+        this.jogos.add(jogo3);
+        this.jogos.add(jogo4);
+        this.jogos.add(jogo5);
+    }
     public TreeSet<Atendimento> getAtendimentos() {
         return atendimentos;
     }

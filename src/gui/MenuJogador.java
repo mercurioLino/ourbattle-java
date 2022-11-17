@@ -124,6 +124,11 @@ public class MenuJogador extends javax.swing.JFrame {
         jLabel7.setText("Organizações");
 
         buttonOrganizacoes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/Organizações.png"))); // NOI18N
+        buttonOrganizacoes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonOrganizacoesActionPerformed(evt);
+            }
+        });
 
         jLabel8.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel8.setText("Perfis");
@@ -249,7 +254,7 @@ public class MenuJogador extends javax.swing.JFrame {
     }//GEN-LAST:event_bContaMouseReleased
 
     private void buttonFuncionariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonFuncionariosActionPerformed
-       new Jogadores(this.ourbattle);
+       new ListJogadores(this.ourbattle);
     }//GEN-LAST:event_buttonFuncionariosActionPerformed
 
     private void buttonTorneiosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonTorneiosActionPerformed
@@ -259,6 +264,10 @@ public class MenuJogador extends javax.swing.JFrame {
     private void buttonPerfisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonPerfisActionPerformed
         new JogadorPerfil(this.ourbattle, this.jogador);
     }//GEN-LAST:event_buttonPerfisActionPerformed
+
+    private void buttonOrganizacoesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonOrganizacoesActionPerformed
+        new ListOrganizacoes(this.ourbattle);
+    }//GEN-LAST:event_buttonOrganizacoesActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel bConta;

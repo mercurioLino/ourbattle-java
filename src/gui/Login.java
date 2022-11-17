@@ -159,7 +159,7 @@ public class Login extends javax.swing.JFrame {
         if (option == 0) {
             new CreateEditJogador(this.ourbattle, null);
         } else if (option == 1) {
-            new CadastroOrganizacao(this.ourbattle);
+            new CreateEditOrganizacao(this.ourbattle, null);
         }
     }//GEN-LAST:event_buttonCadastroMouseClicked
 

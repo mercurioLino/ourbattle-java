@@ -8,12 +8,12 @@ package gui;
  *
  * @author Windows
  */
-public class CadastroTorneio extends javax.swing.JFrame {
+public class CreateEditTorneio extends javax.swing.JFrame {
 
     /**
      * Creates new form CadastroTorneio
      */
-    public CadastroTorneio() {
+    public CreateEditTorneio() {
         initComponents();
         this.setLocationRelativeTo(null);
         this.setVisible(true);

@@ -13,7 +13,7 @@ import java.util.TreeSet;
  * @author leona
  */
 public class ContainsUserByMail {
-    public static boolean containsJogadorByMail(String email, TreeSet<Usuario> usuarios) {
+    public static boolean containsUserByMail(String email, TreeSet<Usuario> usuarios) {
         boolean retorno = false;
         try{
             for(Usuario usuario: usuarios){
