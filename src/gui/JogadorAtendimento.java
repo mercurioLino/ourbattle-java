@@ -40,7 +40,7 @@ public class JogadorAtendimento extends javax.swing.JFrame implements IAtualizaT
     
     @Override
     public void atualizaTabela() {
-        AtualizaTabela.atualizaTabela(this.ourbattle.getPerfis(), this.tabelaAtendimentos);
+        AtualizaTabela.atualizaTabela(this.ourbattle.getAtendimentos(), this.tabelaAtendimentos);
     }
 
 

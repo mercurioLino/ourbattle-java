@@ -143,6 +143,7 @@ public class CreateJogadorAtendimento extends javax.swing.JFrame {
             this.jogador.getAtendimentos().add(atendimento);
         }
         this.attTabela.atualizaTabela();
+        System.out.println(this.ourbattle.getAtendimentos().size());
         salvar(this.ourbattle);
         this.dispose();
     }//GEN-LAST:event_bEnviarActionPerformed

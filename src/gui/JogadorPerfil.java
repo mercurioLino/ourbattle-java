@@ -10,7 +10,7 @@ import actions.IAtualizaTabela;
 import classes.Jogador;
 import classes.OurBattle;
 import classes.Perfil;
-import javax.swing.ListSelectionModel;
+import static io.Salvar.salvar;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
@@ -234,7 +234,10 @@ public class JogadorPerfil extends javax.swing.JFrame implements IAtualizaTabela
     }//GEN-LAST:event_bSairActionPerformed
 
     private void bRemoverPerfilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bRemoverPerfilActionPerformed
-        // TODO add your handling code here:
+        Perfil perfil = FindPerfilById.findPerfilById((String) tabelaPerfis.getValueAt(tabelaPerfis.getSelectedRow(), 0), ourbattle.getPerfis());
+        this.ourbattle.getPerfis().remove(perfil);
+        this.atualizaTabela();
+        salvar(ourbattle);
     }//GEN-LAST:event_bRemoverPerfilActionPerformed
 
     private void bAlterarPerfilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bAlterarPerfilActionPerformed

@@ -47,8 +47,10 @@ public class MenuEquipesJogador extends javax.swing.JFrame implements IAtualizaT
                     Equipe equipe = FindEquipeById.findEquipeById((String) tabelaEquipes.getValueAt(tabelaEquipes.getSelectedRow(), 0), ourbattle.getEquipes());
                     if (equipe.getJogadores().contains(jogador)) {
                         buttonAlterarEquipe.setEnabled(true);
+                        buttonRemoverEquipe.setEnabled(true);
                     } else {
                         buttonAlterarEquipe.setEnabled(false);
+                        buttonRemoverEquipe.setEnabled(false);
                     }
                 }
             }
@@ -68,9 +70,10 @@ public class MenuEquipesJogador extends javax.swing.JFrame implements IAtualizaT
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tabelaEquipes = new javax.swing.JTable();
-        buttonAlterarEquipe = new javax.swing.JButton();
+        buttonRemoverEquipe = new javax.swing.JButton();
         buttonSair = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
+        buttonAlterarEquipe = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -123,7 +126,7 @@ public class MenuEquipesJogador extends javax.swing.JFrame implements IAtualizaT
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 467, Short.MAX_VALUE)
+                .addComponent(jScrollPane1)
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -134,12 +137,12 @@ public class MenuEquipesJogador extends javax.swing.JFrame implements IAtualizaT
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        buttonAlterarEquipe.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        buttonAlterarEquipe.setText("Alterar Equipe");
-        buttonAlterarEquipe.setEnabled(false);
-        buttonAlterarEquipe.addActionListener(new java.awt.event.ActionListener() {
+        buttonRemoverEquipe.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        buttonRemoverEquipe.setText("Remover Equipe");
+        buttonRemoverEquipe.setEnabled(false);
+        buttonRemoverEquipe.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                buttonAlterarEquipeActionPerformed(evt);
+                buttonRemoverEquipeActionPerformed(evt);
             }
         });
 
@@ -153,26 +156,36 @@ public class MenuEquipesJogador extends javax.swing.JFrame implements IAtualizaT
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel1.setText("Sair");
 
+        buttonAlterarEquipe.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        buttonAlterarEquipe.setText("Alterar Equipe");
+        buttonAlterarEquipe.setEnabled(false);
+        buttonAlterarEquipe.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonAlterarEquipeActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
                         .addGap(17, 17, 17)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(buttonSair, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(16, 16, 16)
                                 .addComponent(jLabel1)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(buttonAlterarEquipe)
-                            .addComponent(buttonCreateEquipe, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addGap(278, 278, 278)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(buttonAlterarEquipe, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(buttonCreateEquipe, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(buttonRemoverEquipe, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -183,13 +196,15 @@ public class MenuEquipesJogador extends javax.swing.JFrame implements IAtualizaT
                     .addGroup(layout.createSequentialGroup()
                         .addGap(6, 6, 6)
                         .addComponent(buttonCreateEquipe)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(buttonAlterarEquipe))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(buttonSair, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel1)))
-                .addGap(18, 18, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(buttonRemoverEquipe)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -209,6 +224,13 @@ public class MenuEquipesJogador extends javax.swing.JFrame implements IAtualizaT
         salvar(ourbattle);
     }//GEN-LAST:event_formWindowClosed
 
+    private void buttonRemoverEquipeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonRemoverEquipeActionPerformed
+        Equipe equipe = FindEquipeById.findEquipeById((String) this.tabelaEquipes.getValueAt(this.tabelaEquipes.getSelectedRow(), 0), this.ourbattle.getEquipes());
+        this.ourbattle.getEquipes().remove(equipe);
+        this.atualizaTabela();
+        salvar(ourbattle);
+    }//GEN-LAST:event_buttonRemoverEquipeActionPerformed
+
     private void buttonAlterarEquipeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonAlterarEquipeActionPerformed
         Equipe equipe = FindEquipeById.findEquipeById((String) this.tabelaEquipes.getValueAt(this.tabelaEquipes.getSelectedRow(), 0), this.ourbattle.getEquipes());
         new CreateEditEquipe(this.ourbattle, equipe, null, this);
@@ -218,6 +240,7 @@ public class MenuEquipesJogador extends javax.swing.JFrame implements IAtualizaT
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton buttonAlterarEquipe;
     private javax.swing.JButton buttonCreateEquipe;
+    private javax.swing.JButton buttonRemoverEquipe;
     private javax.swing.JButton buttonSair;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
