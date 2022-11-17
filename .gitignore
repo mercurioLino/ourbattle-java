@@ -33,3 +33,5 @@ nbdist/
 
 # End of https://mrkandreev.name/snippets/gitignore-generator/#Java,NetBeans
 dados/ourbattle.dat
+
+*.dat
