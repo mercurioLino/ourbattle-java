@@ -5,7 +5,7 @@
 package gui;
 
 import actions.AtualizaTabela;
-import actions.FindJogadorById;
+import actions.finds.FindJogadorById;
 import classes.Jogador;
 import classes.OurBattle;
 

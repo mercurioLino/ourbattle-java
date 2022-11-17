@@ -4,9 +4,10 @@
  */
 package gui;
 
+import gui.organizacao.CreateEditFuncionario;
 import actions.AtualizaTabela;
-import actions.FindFuncionarioById;
-import actions.IAtualizaTabela;
+import actions.finds.FindFuncionarioById;
+import interfaces.IAtualizaTabela;
 import classes.Funcionario;
 import classes.Organizacao;
 import classes.OurBattle;

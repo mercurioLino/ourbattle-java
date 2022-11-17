@@ -4,12 +4,16 @@
  */
 package gui;
 
-import static actions.FindJogadorById.findJogadorById;
-import static actions.FindOrganizacaoById.findOrganizacaoById;
+import gui.organizacao.MenuOrganizacao;
+import gui.organizacao.CreateEditOrganizacao;
+import gui.jogador.CreateEditJogador;
+import gui.jogador.MenuJogador;
+import static actions.finds.FindJogadorById.findJogadorById;
+import static actions.finds.FindOrganizacaoById.findOrganizacaoById;
 import classes.OurBattle;
 import classes.Usuario;
 import javax.swing.JOptionPane;
-import static actions.FindUser.findUser;
+import static actions.finds.FindUser.findUser;
 import classes.Jogador;
 
 /**
